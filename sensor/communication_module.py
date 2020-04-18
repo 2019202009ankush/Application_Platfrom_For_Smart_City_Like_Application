@@ -242,7 +242,46 @@ def HealthManager_to_Registry_Producer_interface(mess):
 	producer_json.send_message('HealthManager_to_Registry',mess)
     
 
+# SensorManager_to_DeployManager
+def SensorManager_to_DeployManager_interface(func_name):
+	from kafka import KafkaConsumer
+	topic='SensorManager_to_DeployManager'
+	
+	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
 
+	# consumer.subscribe([topic]) 
+
+	for message in consumer:
+			mess= (message.value)
+			print(mess)
+			th = threading.Thread(target=func_name,kwargs={'msg':mess})
+			th.start()
+            
+
+def SensorManager_to_DeployManager_Producer_interface(mess):
+	producer_json.send_message('SensorManager_to_DeployManager',mess)
+    
+# DeployManager_to_SensorManager
+
+
+def DeployManager_to_SensorManager_interface(func_name):
+	from kafka import KafkaConsumer
+	topic='DeployManager_to_SensorManager'
+	
+	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
+
+	# consumer.subscribe([topic]) 
+
+	for message in consumer:
+			mess= (message.value)
+			print(mess)
+			th = threading.Thread(target=func_name,kwargs={'msg':mess})
+			th.start()
+            
+
+def DeployManager_to_SensorManager_Producer_interface(mess):
+	producer_json.send_message('DeployManager_to_SensorManager',mess)
+    
 
 
 

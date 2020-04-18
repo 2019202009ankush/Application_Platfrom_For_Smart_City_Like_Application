@@ -28,13 +28,13 @@ def sensor_run(id,typ,loc,range,ip,port):
 
 	producer_json.send_message(topic,message)
 
-def sensor(id,typ,loc,range,ip,port,start_time=None,end_time=None,itr=None):
+def sensor(id,typ,loc,ip,port,start_time=None,end_time=None,itr=None):
 	if itr is None:
 		while 1:
-			sensor_run(id,typ,loc,range,ip,port)
+			sensor_run(id,typ,loc,ip,port)
 	else:
 		for i in range (itr):
-			sensor_run(id,typ,loc,range,ip,port)
+			sensor_run(id,typ,loc,ip,port)
 
 
 

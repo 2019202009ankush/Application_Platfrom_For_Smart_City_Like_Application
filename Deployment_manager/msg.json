@@ -1,0 +1,2 @@
+ {"userid": 1, "appid": 1, "algoid": {"path": "Algorithm_Repo/algo1.py", "input": "NaN", "sensor": {"1": "Temperature", "2": "Humidity"}, "dependency": "NaN"}, "start": 1700, "end": 1800, "duration": 10, "frequency": 24, "priority": "high", "action": "sprinklewater", "location": "obh", "reqid": 1, "server": {"server_id": "s1", "ip": "127.0.0.1", "port": 8090}}
+

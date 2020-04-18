@@ -1,15 +1,13 @@
-# RULES 
+###### RULES 
 
-#### First fork
+1. First fork
+2. Then before uploading any file make sure your file has proper name
+3. Make the pull request
+--------------------------------------------------------------------------------------------------------------------------------
 
-#### Then before uploading any file make sure your file has proper name
+# Welcome to the Application_Platfrom_For_Smart_City_Like_Application 
 
-
-#### Make the pull request
-
-
-Welcome to the Application_Platfrom_For_Smart_City_Like_Application wiki!
-
+-------------------------------------------------------------------------------------------------------------------------------
 ###### Rules to run Communication Module
 1. Download and setup docker , docker compose
 2. Now goto the bootstrap module and run init.py (it is doing docker-compose up for kafka)
@@ -19,5 +17,6 @@ Welcome to the Application_Platfrom_For_Smart_City_Like_Application wiki!
 5. Call the Sample consumer interface
    communication_module.ApplicationManager_to_ServiceLifeCycle_interface(fun) [see ServiceLifeCycle.py ]
 6. Videolink: https://www.youtube.com/watch?v=rixFLCBNLao&t=333s
+--------------------------------------------------------------------------------------------------------------------------------
    
 

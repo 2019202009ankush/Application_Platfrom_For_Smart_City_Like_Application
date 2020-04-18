@@ -12,7 +12,7 @@ def event1(msg):
     mess={}
     mess['topics']=topic
     mess['ids']=ids
-    communication_module.SensorManager_to_DeployManager_producer_interface(mess)
+    communication_module.SensorManager_to_DeployManager_Producer_interface(mess)
 	# Input format
     # {
     #   "location":"obh_112",

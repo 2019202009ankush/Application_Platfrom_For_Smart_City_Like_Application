@@ -283,25 +283,13 @@ def DeployManager_to_SensorManager_Producer_interface(mess):
 	producer_json.send_message('DeployManager_to_SensorManager',mess)
     
 
+# ApplicationManager_to_Scheduler
 
-
-def DeploymentManager_to_SensorManager_interface(func_name):
-	from kafka import KafkaConsumer
-	topic='DeploymentManager_to_SensorManager'
-	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',auto_offset_reset='earliest',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
-
-	# consumer.subscribe([topic]) 
-
-	for message in consumer:
-			mess= (message.value)
-			print(mess)
-			th = threading.Thread(target=func_name,kwargs={'msg':mess})
-			th.start()
-		
 def ApplicationManager_to_Scheduler_interface(func_name):
 	from kafka import KafkaConsumer
 	topic='ApplicationManager_to_Scheduler'
-	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',auto_offset_reset='earliest',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
+	
+	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
 
 	# consumer.subscribe([topic]) 
 
@@ -310,34 +298,14 @@ def ApplicationManager_to_Scheduler_interface(func_name):
 			print(mess)
 			th = threading.Thread(target=func_name,kwargs={'msg':mess})
 			th.start()
+            
+
+def ApplicationManager_to_Scheduler_Producer_interface(mess):
+	producer_json.send_message('ApplicationManager_to_Scheduler',mess)
 
 
-def DeploymentManager_to_RuntimeServer_interface(func_name):
-	from kafka import KafkaConsumer
-	topic='DeploymentManager_to_RuntimeServer'
-	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',auto_offset_reset='earliest',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
 
-	# consumer.subscribe([topic]) 
-
-	for message in consumer:
-			mess= (message.value)
-			print(mess)
-			th = threading.Thread(target=func_name,kwargs={'msg':mess})
-			th.start()
-
-		
-def RuntimeServer_to_ActionServer_interface(func_name):
-	from kafka import KafkaConsumer
-	topic='RuntimeServer_to_ActionServer'
-	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',auto_offset_reset='earliest',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
-
-	# consumer.subscribe([topic]) 
-
-	for message in consumer:
-			mess= (message.value)
-			print(mess)
-			th = threading.Thread(target=func_name,kwargs={'msg':mess})
-			th.start()
+# Sensor Stream
 
 def Sersor_Stream(type):
 	from kafka import KafkaConsumer

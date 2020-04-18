@@ -9,7 +9,8 @@
 
 
 Welcome to the Application_Platfrom_For_Smart_City_Like_Application wiki!
-####### Rules to run Communication Module
+
+###### Rules to run Communication Module
 1. Download and setup docker , docker compose
 2. Now goto the bootstrap module and run init.py (it is doing docker-compose up for kafka)
 3. Goto the communation_module directory and import communication module

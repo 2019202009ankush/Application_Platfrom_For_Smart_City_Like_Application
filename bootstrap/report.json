@@ -1,0 +1,1 @@
+{"Communication_Module": {"ip": "125.13.10.10", "port": "6010"}, "Server_LifeCycle": {"ip": "0.0.0.0", "port": "9090"}, "Service_LifeCycle": {"ip": "127.0.0.1", "port": "9090"}, "Schedular": {"ip": "127.0.2.2", "port": "9090"}}

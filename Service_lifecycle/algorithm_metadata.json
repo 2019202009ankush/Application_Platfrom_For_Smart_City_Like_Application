@@ -1,0 +1,30 @@
+{
+  
+	"algo1": {
+		"path": "Algorithm_Repo/algo1.py",
+		"input": "NaN",
+		"sensor":{
+					"1":"Temperature",
+				},
+		"dependency":"NaN"
+		},
+
+	"algo2": {
+		"path": "Algorithm_Repo/algo2.py",
+		"input": "NaN",
+		"sensor":{
+					"1":"Camera"
+				},
+		"dependency":"NaN"
+		},
+
+	"algo3": {
+		"path": "Algorithm_Repo/algo3.py",
+		"input": "NaN",
+		"sensor":{
+					"1":"Infrared"
+				},
+		"dependency":"NaN"
+		}
+  
+}

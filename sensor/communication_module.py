@@ -20,7 +20,7 @@ def ApplicationManager_to_ServiceLifeCycle_interface(func_name):
 	for message in consumer:
 			mess= (message.value)
 			print(mess)
-			th = threading.Thread(target=func_name)
+			th = threading.Thread(target=func_name,kwargs={'msg':mess})
 			th.start()
             
 
@@ -40,7 +40,7 @@ def ServerLifeCycle_to_ServiceLifeCycle_interface(func_name):
 	for message in consumer:
 			mess= (message.value)
 			print(mess)
-			th = threading.Thread(target=func_name)
+			th = threading.Thread(target=func_name,kwargs={'msg':mess})
 			th.start()
             
 
@@ -62,7 +62,7 @@ def ServiceLifeCycle_to_ServerLifeCycle_interface(func_name):
 	for message in consumer:
 			mess= (message.value)
 			print(mess)
-			th = threading.Thread(target=func_name)
+			th = threading.Thread(target=func_name,kwargs={'msg':mess})
 			th.start()
             
 
@@ -84,7 +84,7 @@ def ServiceLifeCycle_to_Authentication_interface(func_name):
 	for message in consumer:
 			mess= (message.value)
 			print(mess)
-			th = threading.Thread(target=func_name)
+			th = threading.Thread(target=func_name,kwargs={'msg':mess})
 			th.start()
             
 
@@ -106,7 +106,7 @@ def Authentication_to_ServiceLifeCycle_interface(func_name):
 	for message in consumer:
 			mess= (message.value)
 			print(mess)
-			th = threading.Thread(target=func_name)
+			th = threading.Thread(target=func_name,kwargs={'msg':mess})
 			th.start()
             
 
@@ -127,7 +127,7 @@ def ServiceLifeCycle_to_DeployManager_interface(func_name):
 	for message in consumer:
 			mess= (message.value)
 			print(mess)
-			th = threading.Thread(target=func_name)
+			th = threading.Thread(target=func_name,kwargs={'msg':mess})
 			th.start()
             
 
@@ -149,7 +149,7 @@ def Schedular_to_ServiceLifeCycle_interface(func_name):
 	for message in consumer:
 			mess= (message.value)
 			print(mess)
-			th = threading.Thread(target=func_name)
+			th = threading.Thread(target=func_name,kwargs={'msg':mess})
 			th.start()
             
 
@@ -169,7 +169,7 @@ def Topology_to_ServiceLifeCycle_interface(func_name):
 	for message in consumer:
 			mess= (message.value)
 			print(mess)
-			th = threading.Thread(target=func_name)
+			th = threading.Thread(target=func_name,kwargs={'msg':mess})
 			th.start()
             
 
@@ -189,7 +189,7 @@ def Topology_to_Registry_interface(func_name):
 	for message in consumer:
 			mess= (message.value)
 			print(mess)
-			th = threading.Thread(target=func_name)
+			th = threading.Thread(target=func_name,kwargs={'msg':mess})
 			th.start()
             
 
@@ -211,7 +211,7 @@ def HealthManager_to_ServiceLifeCycle_interface(func_name):
 	for message in consumer:
 			mess= (message.value)
 			print(mess)
-			th = threading.Thread(target=func_name)
+			th = threading.Thread(target=func_name,kwargs={'msg':mess})
 			th.start()
             
 
@@ -234,7 +234,7 @@ def HealthManager_to_Registry_interface(func_name):
 	for message in consumer:
 			mess= (message.value)
 			print(mess)
-			th = threading.Thread(target=func_name)
+			th = threading.Thread(target=func_name,kwargs={'msg':mess})
 			th.start()
             
 
@@ -242,7 +242,63 @@ def HealthManager_to_Registry_Producer_interface(mess):
 	producer_json.send_message('HealthManager_to_Registry',mess)
     
 
-# Sensor_Stream
+
+
+
+
+def DeploymentManager_to_SensorManager_interface(func_name):
+	from kafka import KafkaConsumer
+	topic='DeploymentManager_to_SensorManager'
+	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',auto_offset_reset='earliest',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
+
+	# consumer.subscribe([topic]) 
+
+	for message in consumer:
+			mess= (message.value)
+			print(mess)
+			th = threading.Thread(target=func_name,kwargs={'msg':mess})
+			th.start()
+		
+def ApplicationManager_to_Scheduler_interface(func_name):
+	from kafka import KafkaConsumer
+	topic='ApplicationManager_to_Scheduler'
+	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',auto_offset_reset='earliest',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
+
+	# consumer.subscribe([topic]) 
+
+	for message in consumer:
+			mess= (message.value)
+			print(mess)
+			th = threading.Thread(target=func_name,kwargs={'msg':mess})
+			th.start()
+
+
+def DeploymentManager_to_RuntimeServer_interface(func_name):
+	from kafka import KafkaConsumer
+	topic='DeploymentManager_to_RuntimeServer'
+	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',auto_offset_reset='earliest',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
+
+	# consumer.subscribe([topic]) 
+
+	for message in consumer:
+			mess= (message.value)
+			print(mess)
+			th = threading.Thread(target=func_name,kwargs={'msg':mess})
+			th.start()
+
+		
+def RuntimeServer_to_ActionServer_interface(func_name):
+	from kafka import KafkaConsumer
+	topic='RuntimeServer_to_ActionServer'
+	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',auto_offset_reset='earliest',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
+
+	# consumer.subscribe([topic]) 
+
+	for message in consumer:
+			mess= (message.value)
+			print(mess)
+			th = threading.Thread(target=func_name,kwargs={'msg':mess})
+			th.start()
 
 def Sersor_Stream(type):
 	from kafka import KafkaConsumer
@@ -255,7 +311,6 @@ def Sersor_Stream(type):
 			mess= (message.value)
 			yield mess
 	return (get_stream())
-
 
 
 # import os

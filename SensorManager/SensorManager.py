@@ -7,16 +7,21 @@ def event1(msg):
 	loc=msg['location']
 	sensors=msg['sensors']
 	import json	
-	with open('SensorRegistry.json') as f:
-		meta = json.load(f)
-	ids=[]
+	with open('SensorRegistry.txt') as f:
+    	lines = f.read().splitlines()
+    ids=[]
 	topics=[]
-	for  topic in sensors:
-		ids.append(meta[str(loc+':'+topic)]
+    sensors_obj=loc+'_'+sensors
+    for l in lines:
+    	print (l)
+    	if(l.split(':')[0]==sensors_obj):
+    		ids.append(l.split(':')[1].split('_')[1])
+    		topics.append(l.split(':')[1].split('_')[0])
 
 	
 	msg['topics']=topic
 	msg['ids']=ids
+	print(msg)
 	communication_module.SensorManager_to_DeployManager_Producer_interface(msg)
 	# Input format
 	# {

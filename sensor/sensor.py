@@ -4,7 +4,7 @@ import producer_json
 import random
 import time
 
-def sensor_run(id,typ,loc,ip,port):
+def sensor_run(i,typ,loc,ip,port):
 	
 	with open('meta.json') as f:
 		meta = json.load(f)
@@ -17,11 +17,11 @@ def sensor_run(id,typ,loc,ip,port):
 		max_limit_of_data=meta[typ]['max']
 
 
-	topic= str(typ+':'+id)
-
+	topic= typ+'_'+i
+	# print('#topic=',topic)
 	message={}
 	message['type']=typ
-	message['id']= id
+	message['id']= i
 	message['location']=loc
 	message['location_type']=None #GPS or room no
 	message['range']=rang
@@ -30,6 +30,13 @@ def sensor_run(id,typ,loc,ip,port):
 	producer_json.send_message(topic,message)
 
 def sensor(id,typ,loc,ip,port,start_time=None,end_time=None,itr=None):
+	ff=open('../SensorManager/SensorRegistry.txt','a+')
+	s=loc+'_'+typ
+
+	meta=typ+'_'+id
+	ff.write(s+':'+meta)
+	ff.close()
+
 	if itr is None:
 		while 1:
 			time.sleep(4)

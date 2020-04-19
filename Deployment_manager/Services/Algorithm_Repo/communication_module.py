@@ -19,202 +19,13 @@ def ApplicationManager_to_ServiceLifeCycle_interface(func_name):
 
 	for message in consumer:
 			mess= (message.value)
-			#print("mess:",mess)
-			th = threading.Thread(target=func_name,kwargs={'m1':mess})
+			print(mess)
+			th = threading.Thread(target=func_name,kwargs={'msg':mess})
 			th.start()
             
 
 def ApplicationManager_to_ServiceLifeCycle_Producer_interface(mess):
 	producer_json.send_message('ApplicationManager_to_ServiceLifeCycle',mess)
-
-
-
-#common log receiver
-def common_Logger_interface(func_name):
-	from kafka import KafkaConsumer
-	topic='common_Logger'
-	
-	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
-
-	# consumer.subscribe([topic]) 
-
-	for message in consumer:
-			mess= (message.value)
-			# print("mess:",mess)
-			th = threading.Thread(target=func_name,kwargs={'m1':mess})
-			th.start()
-			break
-
-#LOGGING INTERFACE with scheduler
-
-def Scheduler_to_Logger_Producer_interface(mess):
-	producer_json.send_message('common_Logger',mess)
-
-
-#LOGGING INTERFACE with deployer
-def Deployer_to_Logger_Producer_interface(mess):
-	producer_json.send_message('common_Logger',mess)
-
-
-
-
-##########Monitoring module
-
-#Mon Module scheduler receiver
-def Scheduler_to_Monitoring_Module_interface(func_name):
-	from kafka import KafkaConsumer
-	topic='Scheduler_to_Monitoring_Module'
-	
-	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
-
-	# consumer.subscribe([topic]) 
-
-	for message in consumer:
-			mess= (message.value)
-			# print("mess:",mess)
-			th = threading.Thread(target=func_name,kwargs={'m1':mess})
-			th.start()
-			break
-
-#Mon INTERFACE with scheduler
-
-def Scheduler_to_Monitoring_Module_Producer_interface(mess):
-	producer_json.send_message('Scheduler_to_Monitoring_Module',mess)
-
-
-#Mon Module receiver Deployer
-def Deployer_to_Monitoring_Module_interface(func_name):
-	from kafka import KafkaConsumer
-	topic='Deployer_to_Monitoring_Module'
-	
-	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
-
-	# consumer.subscribe([topic]) 
-
-	for message in consumer:
-			mess= (message.value)
-			# print("mess:",mess)
-			th = threading.Thread(target=func_name,kwargs={'m1':mess})
-			th.start()
-			break
-
-#Mon INTERFACE with scheduler
-
-def Deployer_to_Monitoring_Module_Producer_interface(mess):
-	producer_json.send_message('Deployer_to_Monitoring_Module',mess)
-
-########Reverse Mon module comm
-
-#Mon Module - scheduler receiver
-def Monitoring_Module_to_Scheduler_interface(func_name):
-	from kafka import KafkaConsumer
-	topic='Monitoring_Module_to_Scheduler'
-	
-	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
-
-	# consumer.subscribe([topic]) 
-
-	for message in consumer:
-			mess= (message.value)
-			# print("mess:",mess)
-			th = threading.Thread(target=func_name,kwargs={'m1':mess})
-			th.start()
-			break
-
-#Mon INTERFACE with scheduler
-
-def Monitoring_Module_to_Scheduler_Producer_interface(mess):
-	producer_json.send_message('Monitoring_Module_to_Scheduler',mess)
-
-
-#Mon Module receiver Deployer
-def Monitoring_Module_to_Deployer_interface(func_name):
-	from kafka import KafkaConsumer
-	topic='Monitoring_Module_to_Deployer'
-	
-	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
-
-	# consumer.subscribe([topic]) 
-
-	for message in consumer:
-			mess= (message.value)
-			# print("mess:",mess)
-			th = threading.Thread(target=func_name,kwargs={'m1':mess})
-			th.start()
-			break
-
-#Mon INTERFACE with scheduler
-
-def Monitoring_Module_to_Deployer_Producer_interface(mess):
-	producer_json.send_message('Monitoring_Module_to_Deployer',mess)
-
-
-
-#TOPO MANAGER to Service Lc
-def TopoManager_to_ServiceLifeCycle_Producer_interface(mess):
-	producer_json.send_message('TopoManager_to_ServiceLifeCycle',mess)
-
-def TopoManager_to_ServiceLifeCycle_interface(func_name):
-	from kafka import KafkaConsumer
-	topic='TopoManager_to_ServiceLifeCycle'
-	
-	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
-
-	# consumer.subscribe([topic]) 
-
-	for message in consumer:
-			mess= (message.value)
-			print("failing message2:",msg)
-			# print("mess:",mess)
-			# th = threading.Thread(target=func_name,kwargs={'m1':mess})
-			# th.start()
-			# break
-
-
-#TOPO MANAGER to Server Lc
-def TopoManager_to_ServerLifeCycle_Producer_interface(mess):
-	producer_json.send_message('TopoManager_to_ServerLifeCycle',mess)
-
-def TopoManager_to_ServerLifeCycle_interface(func_name):
-	from kafka import KafkaConsumer
-	topic='TopoManager_to_ServerLifeCycle'
-	
-	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
-
-	# consumer.subscribe([topic]) 
-
-	for message in consumer:
-			mess= (message.value)
-			print("failing mess:",mess)
-			# th = threading.Thread(target=func_name,kwargs={'m1':mess})
-			# th.start()
-			# break
-
-####################ACtion Server
-# Action Server
-
-def RuntimeServer_to_ActionServer_interface(func_name):
-	from kafka import KafkaConsumer
-	topic='RuntimeServer_to_ActionServer'
-	num=0
-	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
-
-	# consumer.subscribe([topic]) 
-	for message in consumer:
-            mess= (message.value)
-            num+=1
-            print("msg!!!!!",mess)
-            # action_handler(mess)
-            print("Action # "+str(num))
-            print("call threading")
-            th = threading.Thread(target=func_name,kwargs={'message':mess})
-            th.start()
-            # break
-
-def RuntimeServer_to_ActionServer_Producer_interface(mess):
-	producer_json.send_message('RuntimeServer_to_ActionServer',mess)
-
-
 
 # ServerLifeCycle_to_ServiceLifeCycle
 
@@ -494,12 +305,11 @@ def ApplicationManager_to_Scheduler_Producer_interface(mess):
 
 
 
-
 # Sensor Stream
 
-def Sersor_Stream(type,id):
+def Sersor_Stream(type):
 	from kafka import KafkaConsumer
-	topic= type+'_'+id
+	topic='RuntimeServer_to_ActionServer'
 	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',auto_offset_reset='earliest',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
 
 	# consumer.subscribe([topic]) 

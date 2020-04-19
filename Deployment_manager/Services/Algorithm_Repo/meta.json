@@ -1,0 +1,1 @@
+{"temperature": {"type": "real", "range": "10", "min": "20", "max": "40"}, "camera": {"type": "Image", "range": "50"}}

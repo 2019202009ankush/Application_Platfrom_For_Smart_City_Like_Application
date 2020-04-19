@@ -8,7 +8,7 @@
 	"frequency":24,
 	"priority":"high",
 	"action":"sprinklewater",
-	"location":"obh",
+	"location":"obh_112",
 	"reqid":1		
 }
 

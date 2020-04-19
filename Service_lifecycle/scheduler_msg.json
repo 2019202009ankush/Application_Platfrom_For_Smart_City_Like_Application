@@ -1,0 +1,16 @@
+{
+	"userid":1,
+	"appid":1,
+	"algoid":"algo1",
+	"start":1700,
+	"end":1800,
+	"duration":10,
+	"frequency":24,
+	"priority":"high",
+	"action":"sprinklewater",
+	"location":"obh_112",
+	"reqid":1		
+}
+
+  
+

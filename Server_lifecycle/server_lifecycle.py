@@ -43,10 +43,10 @@ def start_server():
 
 	cwd = os.getcwd()
 	print(server_details[_server],_server,server_details[_server]['ip'],server_details[_server]['port'])
-	cmd="gnome-terminal -- python3 -i "+cwd+"/server_stat.py "+str(_server)+" "+str(server_details[_server]['ip'])+" "+str(server_details[_server]['port'])
+	cmd="gnome-terminal -- python3 -i "+cwd+"/server.py "+str(_server)+" "+str(server_details[_server]['ip'])+" "+str(server_details[_server]['port'])
 	os.system(cmd)
 	# print(cmd)
-	print("Server started")
+	print("Server started with server id : ",_server)
 
 
 def start_server_with_stats():
@@ -81,20 +81,20 @@ def load_balancer():
 
 
 def handle_service_LC_msg(msg):
-	print("receive service life cycle msg",msg)
+	print("receive service life cycle msg-------->\n",msg)
 	send_server_details_msg(msg)
 
 def send_server_details_msg(msg):
 	msg['server_id']="s1"
 	msg['ip']="127.0.0.1"
 	msg['port']="9092"
-	print("Service to schedule\n",msg)
+	print("Service to schedule-------->\n",msg)
 	cm.ServerLifeCycle_to_ServiceLifeCycle_Producer_interface(msg)
 	print("\nmsg sended")
 
 
 get_all_server_details()
-#start_server()
+start_server()
 cm.ServiceLifeCycle_to_ServerLifeCycle_interface(handle_service_LC_msg)
 print("Bye!") 
 

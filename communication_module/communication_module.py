@@ -470,6 +470,26 @@ def DeployManager_to_SensorManager_interface(func_name):
 
 def DeployManager_to_SensorManager_Producer_interface(mess):
 	producer_json.send_message('DeployManager_to_SensorManager',mess)
+
+#DeployManager_to_RuntimeServer
+
+def DeployManager_to_RuntimeServer_interface(func_name):
+	from kafka import KafkaConsumer
+	topic='DeployManager_to_RuntimeServer'
+	
+	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
+
+	# consumer.subscribe([topic]) 
+
+	for message in consumer:
+			mess= (message.value)
+			print(mess)
+			th = threading.Thread(target=func_name,kwargs={'msg':mess})
+			th.start()
+            
+
+def DeployManager_to_RuntimeServer_Producer_interface(mess):
+	producer_json.send_message('DeployManager_to_RuntimeServer',mess)
     
 
 # ApplicationManager_to_Scheduler

@@ -29,6 +29,7 @@ def sensor_run(i,typ,loc,ip,port):
 
 	producer_json.send_message(topic,message)
 
+
 def sensor(id,typ,loc,ip,port,start_time=None,end_time=None,itr=None):
 	ff=open('../SensorManager/SensorRegistry.txt','a+')
 	s=loc+'_'+typ

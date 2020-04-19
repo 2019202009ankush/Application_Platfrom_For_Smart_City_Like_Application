@@ -2,8 +2,9 @@ import json
 from bson import json_util
 import producer_json
 import random
+import time
 
-def sensor_run(id,typ,loc,range,ip,port):
+def sensor_run(id,typ,loc,ip,port):
 	
 	with open('meta.json') as f:
 		meta = json.load(f)
@@ -31,9 +32,11 @@ def sensor_run(id,typ,loc,range,ip,port):
 def sensor(id,typ,loc,ip,port,start_time=None,end_time=None,itr=None):
 	if itr is None:
 		while 1:
+			time.sleep(4)
 			sensor_run(id,typ,loc,ip,port)
 	else:
 		for i in range (itr):
+			time.sleep(4)
 			sensor_run(id,typ,loc,ip,port)
 
 

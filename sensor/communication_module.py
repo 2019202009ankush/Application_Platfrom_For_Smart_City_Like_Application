@@ -307,9 +307,9 @@ def ApplicationManager_to_Scheduler_Producer_interface(mess):
 
 # Sensor Stream
 
-def Sersor_Stream(type):
+def Sersor_Stream(type,id):
 	from kafka import KafkaConsumer
-	topic='RuntimeServer_to_ActionServer'
+	topic= str(type+':'+id)
 	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',auto_offset_reset='earliest',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
 
 	# consumer.subscribe([topic]) 

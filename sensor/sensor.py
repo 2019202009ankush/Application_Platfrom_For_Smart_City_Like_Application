@@ -16,7 +16,7 @@ def sensor_run(id,typ,loc,range,ip,port):
 		max_limit_of_data=meta[typ]['max']
 
 
-	topic= typ
+	topic= str(typ+':'+id)
 
 	message={}
 	message['type']=typ

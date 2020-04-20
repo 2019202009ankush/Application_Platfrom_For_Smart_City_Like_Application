@@ -30,7 +30,7 @@ user_no=0
 def action_handler(message):
     print("in action_handler::::",message)
     global user_no
-    dict_msg = json.loads(message);
+    dict_msg = message
     print(user_no)
     action_list = dict_msg['Action']
     print("Number of dict accociated "+str(len(action_list)))

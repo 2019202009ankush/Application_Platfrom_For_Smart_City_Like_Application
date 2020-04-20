@@ -36,6 +36,7 @@ def sensor(id,typ,loc,ip,port,start_time=None,end_time=None,itr=None):
 
 	meta=typ+'_'+id
 	ff.write(s+':'+meta)
+	ff.write("\n")
 	ff.close()
 
 	if itr is None:

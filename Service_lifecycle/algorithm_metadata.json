@@ -1,7 +1,7 @@
 {
   
 	"algo1": {
-		"path": "Algorithm_Repo/Algorithm.py",
+		"path": "AlgorithmRepo/algorithm1.py",
 		"input": "NaN",
 		"sensors":["temperature"],
 		"dependency":"NaN"

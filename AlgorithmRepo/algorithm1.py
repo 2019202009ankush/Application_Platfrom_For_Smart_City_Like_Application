@@ -5,6 +5,10 @@ import communication_module
 import statistics
 
 def run(topic,id,loc):
+	lis=[]
+	print(topic,id,loc)
+	for val in communication_module.Sersor_Stream(topic,id):
+		lis.append(int(val['data']))
     lis=[]
     mess={}
     mess['UserID']=sys.argv[1]
@@ -32,6 +36,9 @@ print("UserID",sys.argv[1])##abc@gmail.com
 print("App_Name",sys.argv[2])##
 print("Action type",sys.argv[3]) ##"Control/Notification"
 print("Output",sys.argv[4])##Output eg temp
+
+
+run(sys.argv[1],sys.argv[2],sys.argv[3])		
 
 
 '''

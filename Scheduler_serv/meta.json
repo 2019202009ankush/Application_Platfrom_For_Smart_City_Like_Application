@@ -2,7 +2,9 @@
 {
 		"scheduler":[
 	{
-		"user_id":"harshit",
+		"UserID": "upadhyayyash1712@gmail.com",
+		"AppName": "Tempreture",
+		"Action_type":"Control",
 		"app _id":"1234",
 		"algoid":"algo1",
 		"priority":"high",

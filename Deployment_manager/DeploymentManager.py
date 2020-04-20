@@ -41,10 +41,12 @@ def generate_dockerfile(msg):
 	f.write(" CMD ['"' pyhton3 '"'," +'"'+  msg["algoid"]["path"]  +'"'+","+'"'+msg["algoid"]["sensor"][1]["topic"] +'"'+"]")
 
 def send_to_server(data):
-	cmd="python3 "
+	cmd=""
 	cmd=cmd+"../"+str(data['algoid']['path'])+" "
+	cmd=cmd+" "+str(data['UserID'])+" "+str(data['AppName'])+" "+str(data['Action_type'])+" "
 	cmd=cmd+str(data['topics'][0])+" "+str(data['ids'][0])+" "
 	cmd=cmd+str(data['location'])
+	cmd
 	mess={}
 	mess['service_id']=str(data['server_id'])
 	mess['code']=str(cmd)

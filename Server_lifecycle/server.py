@@ -1,5 +1,5 @@
 from time import sleep
-from json import dumps
+import json
 import subprocess
 
 import sys
@@ -18,6 +18,7 @@ services=[]
 service_status={}
 
 import os
+
 def handle_service(msg):
 	os.system("python3 "+msg)
 
@@ -54,7 +55,7 @@ def get_system_utilization():
 # t1 = threading.Thread(target=send_server_stats, args=(argv[1])) 
 # t1.start()  
 
-
+print(os.getcwd())
 from kafka import KafkaConsumer
 print('Hii this is ',argv[1])
 topic=argv[1]

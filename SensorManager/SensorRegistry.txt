@@ -1,1 +1,3 @@
 obh_112_temperature:temperature_temp1
+obh_112_temperature:temperature_temp1
+obh_112_temperature:temperature_temp1

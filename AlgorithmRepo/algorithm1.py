@@ -6,6 +6,7 @@ import statistics
 
 def run(topic,id,loc):
 	lis=[]
+	print(topic,id,loc)
 	for val in communication_module.Sersor_Stream(topic,id):
 		lis.append(int(val['data']))
 
@@ -27,4 +28,4 @@ def run(topic,id,loc):
 				mess['command']=str('ON_AC_'+loc)
 				communication_module.Algorithm_to_ActionManager_Producer_interface(mess)
 
-		
+run(sys.argv[1],sys.argv[2],sys.argv[3])		

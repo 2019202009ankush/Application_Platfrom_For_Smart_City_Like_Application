@@ -4,7 +4,7 @@
 	{
 		"user_id":"harshit",
 		"app _id":"1234",
-		"algoid":"12",
+		"algoid":"algo1",
 		"priority":"high",
 		"request_type":"immediate",
 		"days":"",
@@ -16,7 +16,7 @@
 		"form":"run",
 		"action":"",
 		"notification":"",
-		"location":"palash niwas"
+		"location":"obh_112"
 		
 
 	} 

@@ -41,9 +41,15 @@ def generate_dockerfile(msg):
 	f.write(" CMD ['"' pyhton3 '"'," +'"'+  msg["algoid"]["path"]  +'"'+","+'"'+msg["algoid"]["sensor"][1]["topic"] +'"'+"]")
 
 def send_to_server(data):
-	key=data['reqid']
-	msg=data
-	print("\nSending to Run Time server :-\n",key,msg)
+	cmd="python3 "
+	cmd=cmd+"../"+str(data['algoid']['path'])+" "
+	cmd=cmd+str(data['topics'][0])+" "+str(data['ids'][0])+" "
+	cmd=cmd+str(data['location'])
+	mess={}
+	mess['service_id']=str(data['server_id'])
+	mess['code']=str(cmd)
+	cm.DeployManager_to_RuntimeServer_Producer_interface(mess)
+	print("\nSending to Run Time server :-\n",cmd)
 
 
 def request_sensor(data):

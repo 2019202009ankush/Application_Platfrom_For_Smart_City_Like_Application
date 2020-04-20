@@ -3,7 +3,7 @@
 	"algo1": {
 		"path": "Algorithm_Repo/Algorithm.py",
 		"input": "NaN",
-		"sensors":["temparature"],
+		"sensors":["temperature"],
 		"dependency":"NaN"
 		},
 

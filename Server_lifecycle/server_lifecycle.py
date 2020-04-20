@@ -43,7 +43,7 @@ def start_server():
 
 	cwd = os.getcwd()
 	print(server_details[_server],_server,server_details[_server]['ip'],server_details[_server]['port'])
-	cmd="gnome-terminal -- python3 -i "+cwd+"/server.py "+str(_server)+" "+str(server_details[_server]['ip'])+" "+str(server_details[_server]['port'])
+	cmd="gnome-terminal -- python3 -i "+"'"+cwd+"/server.py' "+str(_server)+" "+str(server_details[_server]['ip'])+" "+str(server_details[_server]['port'])
 	os.system(cmd)
 	# print(cmd)
 	print("Server started with server id : ",_server)

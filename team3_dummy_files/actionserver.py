@@ -32,48 +32,54 @@ def action_handler(message):
     global user_no
     dict_msg = message
     print(user_no)
-    action_list = dict_msg['Action']
-    print("Number of dict accociated "+str(len(action_list)))
-    action_tag=[]
-    temp_list=action_list[0]
-    for key in temp_list:
-        action_tag.append(temp_list[key])
-    output = dict_msg['Output']
-    f = open("action_repo.txt",'r+')
-    lines=f.readlines()
-    n=len(action_tag)
-#    print("Number of action accociated "+str(n))
-    userid=dict_msg['UserID']
-    for i in range(n):
-        for line in lines:
-            name=line.split()
-            if(name[0]==action_tag[i]):
-#                print(name[1])
-                call_file=name[1]+" "+userid
-                os.system(call_file)
-#                email_method()
+    if(dict_msg['Action_type']=='Control'):
+        print("Hardware Action to be taken !!!!!!!!",dict_msg['Action'])
+    else:
+        action_list = dict_msg['Action']
+        print("Number of dict accociated "+str(len(action_list)))
+        action_tag=[]
+        temp_list=action_list[0]
+        for key in temp_list:
+            action_tag.append(temp_list[key])
+        output = dict_msg['Output']
+        f = open("action_repo.txt",'r+')
+        lines=f.readlines()
+        n=len(action_tag)
+    #    print("Number of action accociated "+str(n))
+        userid=dict_msg['UserID']
+
+        for i in range(n):
+            for line in lines:
+                name=line.split()
+                if(name[0]==action_tag[i]):
+    #                print(name[1])
+                    call_file=name[1]+" "+userid
+                    os.system(call_file)
+    #                email_method()
+                    
+                    break
+#     action_list = dict_msg['Action']
+#     print("Number of dict accociated "+str(len(action_list)))
+#     action_tag=[]
+#     temp_list=action_list[0]
+#     for key in temp_list:
+#         action_tag.append(temp_list[key])
+#     output = dict_msg['Output']
+#     f = open("action_repo.txt",'r+')
+#     lines=f.readlines()
+#     n=len(action_tag)
+# #    print("Number of action accociated "+str(n))
+#     userid=dict_msg['UserID']
+#     for i in range(n):
+#         for line in lines:
+#             name=line.split()
+#             if(name[0]==action_tag[i]):
+# #                print(name[1])
+#                 call_file=name[1]+" "+userid
+#                 os.system(call_file)
+# #                email_method()
                 
-                break
-#        break
-#    print(dict_msg)
-#    print(type(dict_msg))
-    
-#    
-#def consumer_t(top):
-#    print("consumer of action server called by thread and running")
-#    global user_no
-#    
-#    consumer = KafkaConsumer(top,
-#     bootstrap_servers=['localhost:9092'],
-#     auto_offset_reset='latest',
-#     enable_auto_commit=True,
-#     value_deserializer=lambda x: loads(x.decode('utf-8')))
-#    
-#    for message in consumer:
-#        message = message.value
-#        user_no+=1
-#        action_handler(message)
-#        print((message))
+#                 break
 
 #topic="actionserver"
 #t1 = threading.Thread(target=consumer_t,args=(topic,))

@@ -5,10 +5,7 @@ import communication_module
 import statistics
 
 def run(topic,id,loc):
-	lis=[]
-	print(topic,id,loc)
-	for val in communication_module.Sersor_Stream(topic,id):
-		lis.append(int(val['data']))
+	
     lis=[]
     mess={}
     mess['UserID']=sys.argv[1]

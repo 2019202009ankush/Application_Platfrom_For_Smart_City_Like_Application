@@ -76,7 +76,31 @@ def threadedLog():
 		communication_module.Deployer_to_Logger_Producer_interface(msg)
 		print("msg sent")
 
-start_new_thread(threadedMon,()) 
+
+def threadedMonServ(): 
+	print ("In thread log")
+	while True:
+		sleep(4)
+		print("sending log")
+		msg=logstats
+		# producerDep.send('commonLog', value=msg)
+		communication_module.Runtime_Servers_to_Monitoring_Module_Producer_interface(msg)
+		print("msg sent")
+
+def threadedCommonLog():
+	print ("In thread log")
+	while True:
+		sleep(4)
+		print("sending log")
+		msg=logstats
+		# producerDep.send('commonLog', value=msg)
+		communication_module.common_Logger_Producer_interface(msg)
+		print("msg sent")
+
+
+# start_new_thread(threadedMon,()) 
 # start_new_thread(threadedLog,()) 
+start_new_thread(threadedCommonLog,()) 
+# start_new_thread(threadedMonServ,()) 
 while(1):
 	pass 

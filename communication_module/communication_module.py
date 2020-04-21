@@ -30,6 +30,9 @@ def ApplicationManager_to_ServiceLifeCycle_Producer_interface(mess):
 
 
 #common log receiver
+def common_Logger_Producer_interface(mess):
+	producer_json.send_message('common_Logger',mess)
+
 def common_Logger_interface(func_name):
 	from kafka import KafkaConsumer
 	topic='common_Logger'
@@ -45,8 +48,9 @@ def common_Logger_interface(func_name):
 			th.start()
 			break
 
-#LOGGING INTERFACE with scheduler
 
+
+#LOGGING INTERFACE with scheduler ############USE above common logging interface . Dont use below twp
 def Scheduler_to_Logger_Producer_interface(mess):
 	producer_json.send_message('common_Logger',mess)
 
@@ -59,8 +63,35 @@ def Deployer_to_Logger_Producer_interface(mess):
 
 
 ##########Monitoring module
+'''Monitoring to runtime server ping via channels
+# Monitoring_Module_to_RuntimeServer_Producer_interface(msg) (for ping msgs sending by mon module)
+# Monitoring_Module_to_RuntimeServer_interface(msg)(runtime server receives ping) '''
 
-#Mon Module scheduler receiver
+'''Runtime servers to Monitoring ping via channels
+RuntimeServer_to_Monitoring_Module_Producer_interface(fun2) (sending data from runtime server to mon mod)
+RuntimeServer_to_Monitoring_Module_interface(fun2) (mon mod receives the data) '''
+
+def Runtime_Servers_to_Monitoring_Module_Producer_interface(mess):
+	producer_json.send_message('Runtime_Server_to_Monitoring_Module',mess)
+
+
+def Runtime_Servers_to_Monitoring_Module_interface(func_name):
+	from kafka import KafkaConsumer
+	topic='Runtime_Server_to_Monitoring_Module'
+	
+	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
+
+	# consumer.subscribe([topic]) 
+
+	for message in consumer:
+			mess= (message.value)
+			# print("mess:",mess)
+			th = threading.Thread(target=func_name,kwargs={'m1':mess})
+			th.start()
+			break
+
+
+#Mon Module scheduler receiver #########created for dummy purpose
 def Scheduler_to_Monitoring_Module_interface(func_name):
 	from kafka import KafkaConsumer
 	topic='Scheduler_to_Monitoring_Module'
@@ -76,13 +107,13 @@ def Scheduler_to_Monitoring_Module_interface(func_name):
 			th.start()
 			break
 
-#Mon INTERFACE with scheduler
 
+#Mon INTERFACE with scheduler #########created for dummy purpose
 def Scheduler_to_Monitoring_Module_Producer_interface(mess):
 	producer_json.send_message('Scheduler_to_Monitoring_Module',mess)
 
 
-#Mon Module receiver Deployer
+#Mon Module receiver Deployer #########created for dummy purpose
 def Deployer_to_Monitoring_Module_interface(func_name):
 	from kafka import KafkaConsumer
 	topic='Deployer_to_Monitoring_Module'
@@ -98,14 +129,14 @@ def Deployer_to_Monitoring_Module_interface(func_name):
 			th.start()
 			break
 
-#Mon INTERFACE with scheduler
+#Mon INTERFACE with scheduler #########created for dummy purpose
 
 def Deployer_to_Monitoring_Module_Producer_interface(mess):
 	producer_json.send_message('Deployer_to_Monitoring_Module',mess)
 
 ########Reverse Mon module comm
 
-#Mon Module - scheduler receiver
+#Mon Module - scheduler receiver #########created for dummy purpose
 def Monitoring_Module_to_Scheduler_interface(func_name):
 	from kafka import KafkaConsumer
 	topic='Monitoring_Module_to_Scheduler'
@@ -121,13 +152,13 @@ def Monitoring_Module_to_Scheduler_interface(func_name):
 			th.start()
 			break
 
-#Mon INTERFACE with scheduler
+#Mon INTERFACE with scheduler #########created for dummy purpose
 
 def Monitoring_Module_to_Scheduler_Producer_interface(mess):
 	producer_json.send_message('Monitoring_Module_to_Scheduler',mess)
 
 
-#Mon Module receiver Deployer
+#Mon Module receiver Deployer #########created for dummy purpose
 def Monitoring_Module_to_Deployer_interface(func_name):
 	from kafka import KafkaConsumer
 	topic='Monitoring_Module_to_Deployer'
@@ -143,12 +174,14 @@ def Monitoring_Module_to_Deployer_interface(func_name):
 			th.start()
 			break
 
-#Mon INTERFACE with scheduler
+#Mon INTERFACE with scheduler #########created for dummy purpose
 
 def Monitoring_Module_to_Deployer_Producer_interface(mess):
 	producer_json.send_message('Monitoring_Module_to_Deployer',mess)
 
 
+
+#################TOPOLOGICAL MANAGER COMMUNICATIONS
 
 #TOPO MANAGER to Service Lc
 def TopoManager_to_ServiceLifeCycle_Producer_interface(mess):

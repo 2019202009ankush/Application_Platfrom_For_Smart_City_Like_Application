@@ -12,10 +12,46 @@ def sensor_run(i,typ,loc,ip,port):
 	rang=meta[typ]['range']
 	# frequency=meta[typ]['frequency']
 	type_=meta[typ]['type']
-	if type_ == 'real':
-		min_limit_of_data=meta[typ]['min']
-		max_limit_of_data=meta[typ]['max']
+	data=None
 
+	if type_ == '4':
+		min_max1=meta[typ]['min_max1']
+		min_max2=meta[typ]['min_max2']
+		min_max3=meta[typ]['min_max3']
+		min_max4=meta[typ]['min_max4']
+		
+		ran=random.randrange(0,100)
+		if ran>=min_max1[1] and ran <=min_max1[2]:
+			data=random.randrange(min_max1[0][0],min_max1[0][1])
+		elif ran>=min_max2[1] and ran <=min_max2[2]:
+			data=random.randrange(min_max2[0][0],min_max2[0][1])
+		elif ran>=min_max3[1] and ran <=min_max3[2]:
+			data=random.randrange(min_max3[0][0],min_max3[0][1])
+		elif ran>=min_max4[1] and ran <=min_max4[2]:
+			data=random.randrange(min_max4[0][0],min_max4[0][1])
+
+	elif type_=='1':
+		# print('here in',type_)
+		min_max1=meta[typ]['min_max1']
+		ran=random.randrange(0,100)
+		# print(ran)
+		if ran>=min_max1[1] and ran <=min_max1[2]:
+			data=min_max1[0][1]
+		else:
+			data=min_max1[0][0]
+
+
+	elif type_=='2':
+		# print('here in',type_)
+		min_max1=meta[typ]['min_max1']
+		min_max2=meta[typ]['min_max2']
+		
+		data=''
+		data+=str(random.randrange(min_max1[0][0],min_max1[0][1]))
+		data+=':'
+		data+=str(random.randrange(min_max2[0][0],min_max2[0][1]))
+	
+	
 
 	topic= typ+'_'+i
 	# print('#topic=',topic)
@@ -25,8 +61,7 @@ def sensor_run(i,typ,loc,ip,port):
 	message['location']=loc
 	message['location_type']=None #GPS or room no
 	message['range']=rang
-	message['data']=random.randrange(int(min_limit_of_data), int(max_limit_of_data))
-
+	message['data']=data
 	producer_json.send_message(topic,message)
 
 

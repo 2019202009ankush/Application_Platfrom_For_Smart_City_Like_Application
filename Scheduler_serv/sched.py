@@ -15,7 +15,7 @@ import time
 import collections 
 # topic_own="pandey"
 
-sys.path.insert(0, "/home/dell/Pictures/course_work/ias/group3_team1/cm/communication_module")
+sys.path.insert(0, "../communication_module")
 
 import communication_module as cm
 
@@ -42,7 +42,7 @@ dq = collections.deque()
 queue=[]
 
 def algo1(): 
-    print("algo1 is running") 
+    print("",end="") 
   
 def algo2(): 
     print("algo2 is running") 
@@ -79,7 +79,7 @@ def period(duration,start,algo):
 
 def inputq(msg):
     global dq
-    msg= json.loads(msg) 
+    msg=msg 
     print(type(msg))
     cm.Schedular_to_ServiceLifeCycle_Producer_interface(msg)
 

@@ -6,7 +6,7 @@ import json
 # import collections 
 topic_own="pandey"
 
-sys.path.insert(0, "/home/dell/Pictures/course_work/ias/group3_team1/cm/communication_module")
+sys.path.insert(0, "../communication_module")
 
 import communication_module as cm
 

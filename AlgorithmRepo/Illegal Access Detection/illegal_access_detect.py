@@ -12,7 +12,7 @@ def run(topic,id,loc):
 	mess['Output']=None
 
 	for val in communication_module.Sersor_Stream(topic,id):
-		#print(val)
+		print(val['data'])
 		if(int(val['data'])==1):
 			mess['algorithm']=str('Illegal Access Detection')
 			mess["Action"]=str("Illegal Access Detection at "+loc)

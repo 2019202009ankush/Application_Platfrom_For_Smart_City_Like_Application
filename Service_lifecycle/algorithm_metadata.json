@@ -7,11 +7,11 @@
 		"dependency":"NaN"
 		},
 
-	"algo2": {
-		"path": "Algorithm_Repo/algo2.py",
+	"IAD": {
+		"path": "AlgorithmRepo/Illegal Access Detection/illegal_access_detect.py",
 		"input": "NaN",
-		"sensors":["temparature","humidity"],
-		"dependency":"NaN"
+		"sensors":["doorstep"],
+		"dependency":"pip3 install python3"
 		},
 
 	"algo3": {

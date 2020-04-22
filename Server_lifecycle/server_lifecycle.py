@@ -17,6 +17,7 @@ import producer_json
 server_details={}
 
 def handle_service(msg):
+	print("#######",msg)
 	service_id=msg['service_id']
 	code=msg['code']
 	logmsg={}
@@ -112,17 +113,17 @@ def send_server_details_msg(msg):
 	print("\nmsg sended")
 
 
-def handle_service():
+def handle_servicee():
 	while(1):
 		cm.ServiceLifeCycle_to_ServerLifeCycle_interface(handle_service_LC_msg)
 
 
 get_all_server_details()
 start_server()
-start_server()
+#start_server()
 t1 = threading.Thread(target=handle_runtime, args=()) 
 t1.start() 
-t2 = threading.Thread(target=handle_service , args=()) 
+t2 = threading.Thread(target=handle_servicee , args=()) 
 t2.start()  
 t1.join()
 t2.join()

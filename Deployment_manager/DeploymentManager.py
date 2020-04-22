@@ -42,7 +42,7 @@ def generate_dockerfile(msg):
 
 def send_to_server(data):
 	cmd=""
-	cmd=cmd+"../"+str(data['algoid']['path'])+" "
+	cmd=cmd+'"'+"../"+str(data['algoid']['path'])+'"'+" "
 	cmd=cmd+" "+str(data['UserID'])+" "+str(data['AppName'])+" "+str(data['Action_type'])+" "
 	cmd=cmd+str(data['topics'][0])+" "+str(data['ids'][0])+" "
 	cmd=cmd+str(data['location'])

@@ -12,14 +12,23 @@ import sys
 sys.path.insert(0, "../communication_module")
 
 import communication_module as cm
+import producer_json
 
 server_details={}
 
-def run_service(producer,server_id,service_name):
-	msg=service_name
-	producer.send('ServiceToServer',key=bytes(str(server_id), 'utf8'),value=bytes(str(msg), 'utf8'))
-	print("Sent to Server lifecycle manager : ",server_id,msg)
+def handle_service(msg):
+	service_id=msg['service_id']
+	code=msg['code']
+	logmsg={}
+	logmsg['component']='Server_lifecycle'
+	logmsg['msg']=msg
+	cm.common_Logger_Producer_interface(logmsg)
+	producer_json.send_message(service_id,code)
 
+
+def handle_runtime():
+	while(1):
+		cm.DeployManager_to_RuntimeServer_interface(handle_service)
 
 
 def get_all_server_details():
@@ -41,7 +50,12 @@ def start_server():
 		print("All servers are active")
 		return
 
+	server_details[i]['active']==1
 	cwd = os.getcwd()
+	logmsg={}
+	logmsg['component']='Server_lifecycle'
+	logmsg['msg']=str(_server)+" has been started"
+	cm.common_Logger_Producer_interface(logmsg)
 	print(server_details[_server],_server,server_details[_server]['ip'],server_details[_server]['port'])
 	cmd="gnome-terminal -- python3 -i "+"'"+cwd+"/server.py' "+str(_server)+" "+str(server_details[_server]['ip'])+" "+str(server_details[_server]['port'])
 	os.system(cmd)
@@ -89,12 +103,28 @@ def send_server_details_msg(msg):
 	msg['ip']="127.0.0.1"
 	msg['port']="9092"
 	print("Service to schedule-------->\n",msg)
+	logmsg={}
+	logmsg['component']='Server_lifecycle'
+	logmsg['msg']=msg
+	cm.common_Logger_Producer_interface(logmsg)
 	cm.ServerLifeCycle_to_ServiceLifeCycle_Producer_interface(msg)
 	print("\nmsg sended")
 
 
+def handle_service():
+	while(1):
+		cm.ServiceLifeCycle_to_ServerLifeCycle_interface(handle_service_LC_msg)
+
+
 get_all_server_details()
 start_server()
-cm.ServiceLifeCycle_to_ServerLifeCycle_interface(handle_service_LC_msg)
+start_server()
+t1 = threading.Thread(target=handle_runtime, args=()) 
+t1.start() 
+t2 = threading.Thread(target=handle_service , args=()) 
+t2.start()  
+t1.join()
+t2.join()
 print("Bye!") 
+
 

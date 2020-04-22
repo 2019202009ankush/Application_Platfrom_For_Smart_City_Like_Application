@@ -41,9 +41,12 @@ commonLog = KafkaConsumer(
 
 
 def eventReceiveLogData(m1):
-    print("receieved:::",m1)
+    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!receieved log data:::",m1)
     message = m1
-    res = ast.literal_eval(message) 
+    if (isinstance(message, dict) ):
+    	res=message
+    else:
+    	res = ast.literal_eval(message) 
     # print("Message receieved:",(res),type(res))
     print("table to store:",res['component'])
     # mycol = mydb["logtable"]
@@ -58,9 +61,9 @@ fun=eventReceiveLogData
 
 
 def threaded():
-	print ("In thread")
+	print ("In thread!!!!!!!!!!!!")
 	while True:
-		sleep(2)
+		# sleep(2)
 		# print("hi")
 		communication_module.common_Logger_interface(fun)
 		'''for message in commonLog:

@@ -29,8 +29,14 @@ mydb = myclient["hackdb"]
 
 def eventReceiveRuntimeServerToMonMod(m1):
     print("receieved:::",m1)
+    print(type(m1))
     message = m1
-    res = ast.literal_eval(message) 
+    if (isinstance(message, dict) ):
+    	res=message
+    else:
+    	res = ast.literal_eval(message) 
+
+    # res = ast.literal_eval(message) 
     print("Message receieved:",(res),type(res))
     mycol = mydb["mon_data"]
     # mydict = { "name": "John", "address": "Highway 37" }

@@ -15,7 +15,7 @@ import time
 import collections 
 # topic_own="pandey"
 
-sys.path.insert(0, "../communication_module")
+sys.path.insert(0, "/home/dell/Pictures/course_work/ias/group3_team1/cm/communication_module")
 
 import communication_module as cm
 
@@ -64,7 +64,9 @@ def notregular(start_time,end_time,duration,algo):
 def immediate(duration,algo):
     global z
     print("here")
-    z=schedule.every(int(duration)).seconds.do(eval(algo)) 
+    # z=schedule.every(int(duration)).seconds.do(eval(algo))
+    z=schedule.every(int(duration)).seconds.do(algo1) 
+
 
 def period(duration,start,algo):
     global a
@@ -77,6 +79,8 @@ def period(duration,start,algo):
 
 def inputq(msg):
     global dq
+    msg= json.loads(msg) 
+    print(type(msg))
     cm.Schedular_to_ServiceLifeCycle_Producer_interface(msg)
 
     # for message in consumer:

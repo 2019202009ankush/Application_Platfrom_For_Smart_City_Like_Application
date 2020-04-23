@@ -11,13 +11,13 @@ th8 = threading.Thread(target=sensor.sensor,kwargs={'id':'d7','typ':'doorstep','
 th9 = threading.Thread(target=sensor.sensor,kwargs={'id':'d8','typ':'doorstep','loc':'obh_118','ip':'0.0.0.0','port':'9557'})
 th10 = threading.Thread(target=sensor.sensor,kwargs={'id':'d9','typ':'doorstep','loc':'obh_119','ip':'0.0.0.0','port':'9557'})
 # sensor.sensor('d1','numeric_attandance','obh_112','0.0.0.0','9557')
-th1.start
-th2.start
-th3.start
-th4.start
-th5.start
-th6.start
-th7.start
-th8.start
-th9.start
-th10.start
+th1.start()
+th2.start()
+th3.start()
+th4.start()
+th5.start()
+th6.start()
+th7.start()
+th8.start()
+th9.start()
+th10.start()

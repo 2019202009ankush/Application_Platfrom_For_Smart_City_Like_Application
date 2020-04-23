@@ -1,4 +1,3 @@
-import sensor
-sensor.sensor('temp1','temperature','obh_112','0.0.0.0','9557')
-sensor.sensor('d1','numeric_attandance','obh_112','0.0.0.0','9557')
-sensor.sensor('d1','doorstep','obh_112','0.0.0.0','9557')
+import subprocess
+
+subprocess.run("python3 temp_up.py & python3 door_up.py & python3 num_up.py", shell=True)

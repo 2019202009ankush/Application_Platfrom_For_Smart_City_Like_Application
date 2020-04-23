@@ -43,15 +43,30 @@ def sensor_run(i,typ,loc,ip,port):
 
 	elif type_=='2':
 		# print('here in',type_)
-		min_max1=meta[typ]['min_max1']
-		min_max2=meta[typ]['min_max2']
+		ran=random.randrange(0,100)
+
+		if ran>=0 and ran<60:
 		
-		data=''
-		data+=str(random.randrange(min_max1[0][0],min_max1[0][1]))
-		data+=':'
-		data+=str(random.randrange(min_max2[0][0],min_max2[0][1]))
+				data=''
+				data+=str(random.randrange(30,70))
+				data+=':'
+				data+=str(random.randrange(150,250))
+		elif ran>=60 and ran<80:
+				data=''
+				data+=str(random.randrange(50,100))
+				data+=':'
+				data+=str(random.randrange(100,150))
+		else:
+				data=''
+				data+=str(random.randrange(30,50))
+				data+=':'
+				data+=str(random.randrange(80,100))
 	
-	
+	if typ == 'temperature':
+		f=open('../Dashboard/temperature.txt','a+')
+		f.write(str(data))
+		f.write("\n")
+		f.close()
 
 	topic= typ+'_'+i
 	# print('#topic=',topic)
@@ -62,6 +77,7 @@ def sensor_run(i,typ,loc,ip,port):
 	message['location_type']=None #GPS or room no
 	message['range']=rang
 	message['data']=data
+
 	producer_json.send_message(topic,message)
 
 

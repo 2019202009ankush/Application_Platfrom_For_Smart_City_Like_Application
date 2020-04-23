@@ -69,7 +69,7 @@ def sensor_run(i,typ,loc,ip,port):
 		f.close()
 
 	topic= typ+'_'+i
-	# print('#topic=',topic)
+	print('#topic=',topic)
 	message={}
 	message['type']=typ
 	message['id']= i

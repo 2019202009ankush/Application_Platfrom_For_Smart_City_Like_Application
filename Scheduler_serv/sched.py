@@ -15,7 +15,7 @@ import time
 import collections 
 # topic_own="pandey"
 
-sys.path.insert(0, "/home/dell/Pictures/course_work/ias/group3_team1/cm/communication_module")
+sys.path.insert(0, "../communication_module")
 
 import communication_module as cm
 
@@ -54,21 +54,25 @@ def algo3():
     # print("algo3 is running")
 global x,y,z,a
 
+def IAD():
+    i=4
+
+    
 def regular(days,start_time,duration,algo):
     global x
-    x=schedule.every(int(duration)).days.at(start_time).do(eval(algo))
+    # x=schedule.every(int(duration)).days.at(start_time).do(eval(algo))
 
 
 def notregular(start_time,end_time,duration,algo):
     global y
-    y=schedule.every(int(duration)).tuesday.at(start_time).do(eval(algo)) 
+    # y=schedule.every(int(duration)).tuesday.at(start_time).do(eval(algo)) 
 
 
 def immediate(duration,algo):
     global z
     # print("here")
     # z=schedule.every(int(duration)).seconds.do(eval(algo))
-    z=schedule.every(int(duration)).seconds.do(algo1) 
+    # z=schedule.every(int(duration)).seconds.do(algo1) 
 
 
 def period(duration,start,algo):

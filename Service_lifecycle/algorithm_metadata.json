@@ -14,11 +14,19 @@
 		"dependency":"pip3 install python3"
 		},
 
-	"algo3": {
-		"path": "Algorithm_Repo/algo3.py",
+	"classSchedule": {
+		"path": "AlgorithmRepo/Scheduling Classes/scheduling_algo.py",
 		"input": "NaN",
-		"sensors":["humidity"],
-		"dependency":"NaN"
+		"sensors":["numeric_attandance","numeric_attandance","numeric_attandance","numeric_attandance","numeric_attandance",
+			"numeric_attandance","numeric_attandance","numeric_attandance","numeric_attandance","numeric_attandance"],
+		"dependency":"pip3 install python3"
+	},
+
+	"SAC": {
+		"path": "AlgorithmRepo/Smart AC/ac_temp.py",
+		"input": "NaN",
+		"sensors":["temperature"],
+		"dependency":"pip3 install python3"
 		}
   
 }

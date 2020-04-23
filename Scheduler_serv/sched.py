@@ -15,13 +15,13 @@ import time
 import collections 
 # topic_own="pandey"
 
-sys.path.insert(0, "../communication_module")
+sys.path.insert(0, "/home/dell/Pictures/course_work/ias/group3_team1/cm/communication_module")
 
 import communication_module as cm
 
 
 
-
+current_process=None
 
 dq = collections.deque() 
 # consumer = KafkaConsumer(
@@ -42,18 +42,21 @@ dq = collections.deque()
 queue=[]
 
 def algo1(): 
-    print("",end="") 
+    # print("algo1 is running")
+    i=1 
   
 def algo2(): 
-    print("algo2 is running") 
+    i=2
+    # print("algo2 is running") 
   
 def algo3(): 
-    print("algo3 is running")
+    i=3
+    # print("algo3 is running")
 global x,y,z,a
 
 def regular(days,start_time,duration,algo):
     global x
-    x=schedule.every(int(duration)).day.at(start_time).do(eval(algo))
+    x=schedule.every(int(duration)).days.at(start_time).do(eval(algo))
 
 
 def notregular(start_time,end_time,duration,algo):
@@ -63,7 +66,7 @@ def notregular(start_time,end_time,duration,algo):
 
 def immediate(duration,algo):
     global z
-    print("here")
+    # print("here")
     # z=schedule.every(int(duration)).seconds.do(eval(algo))
     z=schedule.every(int(duration)).seconds.do(algo1) 
 
@@ -79,8 +82,17 @@ def period(duration,start,algo):
 
 def inputq(msg):
     global dq
-    msg=msg 
-    print(type(msg))
+    # global current_process
+    # current_process=msg
+    # msg= json.loads(msg)
+    # print("1")
+    # print(msg["priority"])
+
+    # msg=eval(msg)
+    # print("2") 
+    # print("type",type(msg))
+    # print(" length",len(msg))
+    # print("here")
     cm.Schedular_to_ServiceLifeCycle_Producer_interface(msg)
 
     # for message in consumer:
@@ -89,7 +101,7 @@ def inputq(msg):
     #     # start_new_thread(recv_thread,())
     #     message = message.value
     if(msg["priority"]=="high"):
-        print("hey ya")
+        # print("hey ya")
         dq.appendleft(msg)
     else:
         dq.append(msg)
@@ -97,7 +109,7 @@ def inputq(msg):
 
 def to_recv():
     # start_new_thread(inputq,())
-    print("yaha")
+    # print("yaha")
     cm.ApplicationManager_to_Scheduler_interface(inputq)
 
     
@@ -133,8 +145,8 @@ def main():
             i=i+1
             meta_data=dq.pop()
             # loq=loq-1
-            print("in while",meta_data)
-            print(i)
+            # print("in while",meta_data)
+            # print(i)
             if(meta_data["form"]=="run"):
 
 

@@ -1,0 +1,8 @@
+userid:shubham@gmail.com
+app_id:1
+algoid:2
+algo:algo1
+action:on_ac
+location:obh_11
+sensortype:temperature
+old/runningservice:no

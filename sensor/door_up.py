@@ -1,15 +1,15 @@
 import sensor
-import thread
-th1 = threading.Thread(target=sensor.sensor,kwargs={'d1':id,'doorstep':typ,'obh_112':loc,'0.0.0.0':ip,'9557':port})
-th2 = threading.Thread(target=sensor.sensor,kwargs={'d2':id,'doorstep':typ,'obh_113':loc,'0.0.0.0':ip,'9557':port})
-th3 = threading.Thread(target=sensor.sensor,kwargs={'d3':id,'doorstep':typ,'obh_114':loc,'0.0.0.0':ip,'9557':port})
-th4 = threading.Thread(target=sensor.sensor,kwargs={'d4':id,'doorstep':typ,'obh_115':loc,'0.0.0.0':ip,'9557':port})
-th5 = threading.Thread(target=sensor.sensor,kwargs={'d5':id,'doorstep':typ,'obh_116':loc,'0.0.0.0':ip,'9557':port})
-th6 = threading.Thread(target=sensor.sensor,kwargs={'d6':id,'doorstep':typ,'obh_117':loc,'0.0.0.0':ip,'9557':port})
-th7 = threading.Thread(target=sensor.sensor,kwargs={'d7':id,'doorstep':typ,'obh_118':loc,'0.0.0.0':ip,'9557':port})
-th8 = threading.Thread(target=sensor.sensor,kwargs={'d8':id,'doorstep':typ,'obh_119':loc,'0.0.0.0':ip,'9557':port})
-th9 = threading.Thread(target=sensor.sensor,kwargs={'d9':id,'doorstep':typ,'obh_111':loc,'0.0.0.0':ip,'9557':port})
-th10 = threading.Thread(target=sensor.sensor,kwargs={'d10':id,'doorstep':typ,'obh_110':loc,'0.0.0.0':ip,'9557':port})
+import threading
+th1 = threading.Thread(target=sensor.sensor,kwargs={'id':'d1','typ':'doorstep','loc':'obh_111','ip':'0.0.0.0','port':'9557'})
+th2 = threading.Thread(target=sensor.sensor,kwargs={'id':'d2','typ':'doorstep','loc':'obh_112','ip':'0.0.0.0','port':'9557'})
+th3 = threading.Thread(target=sensor.sensor,kwargs={'id':'d10','typ':'doorstep','loc':'obh_1110','ip':'0.0.0.0','port':'9557'})
+th4 = threading.Thread(target=sensor.sensor,kwargs={'id':'d3','typ':'doorstep','loc':'obh_113','ip':'0.0.0.0','port':'9557'})
+th5 = threading.Thread(target=sensor.sensor,kwargs={'id':'d4','typ':'doorstep','loc':'obh_114','ip':'0.0.0.0','port':'9557'})
+th6 = threading.Thread(target=sensor.sensor,kwargs={'id':'d5','typ':'doorstep','loc':'obh_115','ip':'0.0.0.0','port':'9557'})
+th7 = threading.Thread(target=sensor.sensor,kwargs={'id':'d6','typ':'doorstep','loc':'obh_116','ip':'0.0.0.0','port':'9557'})
+th8 = threading.Thread(target=sensor.sensor,kwargs={'id':'d7','typ':'doorstep','loc':'obh_117','ip':'0.0.0.0','port':'9557'})
+th9 = threading.Thread(target=sensor.sensor,kwargs={'id':'d8','typ':'doorstep','loc':'obh_118','ip':'0.0.0.0','port':'9557'})
+th10 = threading.Thread(target=sensor.sensor,kwargs={'id':'d9','typ':'doorstep','loc':'obh_119','ip':'0.0.0.0','port':'9557'})
 # sensor.sensor('d1','numeric_attandance','obh_112','0.0.0.0','9557')
 th1.start
 th2.start

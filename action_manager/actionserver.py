@@ -34,7 +34,8 @@ def action_handler(message):
     print(user_no)
     if(dict_msg['Action_type']=='Control'):
         print("Hardware Action to be taken !!!!!!!!",dict_msg['Action'])
-    else:
+    
+    elif(dict_msg['Action_type']=='Notification'):
         action_list = dict_msg['Action']
         print("Number of dict accociated "+str(len(action_list)))
         action_tag=[]
@@ -44,6 +45,7 @@ def action_handler(message):
         output = dict_msg['Output']
         f = open("action_repo.txt",'r+')
         lines=f.readlines()
+        f.close()
         n=len(action_tag)
     #    print("Number of action accociated "+str(n))
         userid=dict_msg['UserID']
@@ -53,10 +55,9 @@ def action_handler(message):
                 name=line.split()
                 if(name[0]==action_tag[i]):
     #                print(name[1])
-                    call_file=name[1]+" "+userid
+                    call_file=name[1]+" "+str(userid)+" "+str(output)
                     os.system(call_file)
     #                email_method()
-                    
                     break
 #     action_list = dict_msg['Action']
 #     print("Number of dict accociated "+str(len(action_list)))

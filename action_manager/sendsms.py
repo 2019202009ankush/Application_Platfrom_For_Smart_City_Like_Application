@@ -12,6 +12,8 @@ client = Client(account_sid, auth_token)
 ''' Change the value of 'from' with the number  
 received from Twilio and the value of 'to' 
 with the number in which you want to send message.'''
+arg1=sys.argv[1]
+arg1=sys.argv[2]
 body2="alert recieved"
 print(body2)
 message = client.messages.create( 

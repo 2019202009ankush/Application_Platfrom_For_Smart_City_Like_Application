@@ -54,6 +54,9 @@ def get_system_utilization():
 print(os.getcwd())
 from kafka import KafkaConsumer
 print('Hii this is ',argv[1])
+if(argv[1]=="s3"):
+	print("------------ This Server is for Exclusive Services -----------------")
+
 topic=argv[1]
 
 t1 = threading.Thread(target=send_server_stats, args=(argv[1],)) 

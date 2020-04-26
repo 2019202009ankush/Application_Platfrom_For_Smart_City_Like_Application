@@ -5,6 +5,5 @@ RUN apt-get -y install python3-pip
 RUN pip3 install kafka-python
 ADD . /platform
 WORKDIR /platform
-CMD ["python3", "/platform/Application Manager/new_am.py"]
-CMD ["python3", "/platform/Scheduler_serv/sched.py"]
-CMD ["python3", "/platform/action_manager/actionserver.py","s1"]
+CMD ["python3", "/platform/Service_lifecycle/service_lifecycle.py"]
+

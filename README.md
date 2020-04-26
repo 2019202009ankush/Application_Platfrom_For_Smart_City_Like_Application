@@ -18,3 +18,6 @@
    communication_module.ApplicationManager_to_ServiceLifeCycle_interface(fun) [see ServiceLifeCycle.py ]
 6. Videolink: https://www.youtube.com/watch?v=rixFLCBNLao&t=333s
 --------------------------------------------------------------------------------------------------------------------------------
+
+
+docker run --rm --network=host new

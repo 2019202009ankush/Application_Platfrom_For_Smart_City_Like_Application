@@ -2,14 +2,20 @@ import sys
 import os
 import time
 
-sys.path.insert(0,"../../communication_module")
+import sys
+sys.path.insert(0,"../communication_module")
+
+import communication_module
+
+
+# sys.path.insert(0,"../../../communication_module")
 # print("!!!!!!!!!",os.system("ls"))
 
 
 import random
 import copy
 import ast 
-import communication_module
+# import communication_module
 import statistics
 from _thread import *
 import threading 
@@ -168,7 +174,7 @@ def create_schedule(msg):
 	mess1={}
 	mess1['UserID']=acadoffile_email
 	mess1['App_Name']="Reschedule"
-	mess1['Action_type']="Notification"
+	mess1['ActionType']="Notification"
 	# mess1['Output']=lis2tosend
 	msg1=""
 	for i in lis2tosend:
@@ -267,7 +273,10 @@ def read_init_data(sensor_data):
 
 
 print("Algo Started")
+print("argsss",len(sys.argv))
+# for i in range(sys.argv):
 sensor_count=int(sys.argv[5])
+print("sensor_ct",sensor_count)
 
 sensor_data=[]
 x=6

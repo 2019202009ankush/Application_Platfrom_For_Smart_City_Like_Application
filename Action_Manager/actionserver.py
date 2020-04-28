@@ -28,37 +28,44 @@ user_no=0
 #    s.quit() 
 
 def action_handler(message):
-    print("in action_handler::::",message)
+    print("in action_handler::111::",message)
     global user_no
     dict_msg = message
     print(user_no)
-    if(dict_msg['Action_type']=='Control'):
-        print("Hardware Action to be taken !!!!!!!!",dict_msg['Action'])
+    if(dict_msg['ActionType']=='Control'):
+        print("Hardware Action to be taken !!!!!!!!",dict_msg['Output'])
     
-    elif(dict_msg['Action_type']=='Notification'):
+    elif(dict_msg['ActionType']=='Notification'):
         action_list = dict_msg['Action']
         print("Number of dict accociated "+str(len(action_list)))
         action_tag=[]
-        temp_list=action_list[0]
-        for key in temp_list:
-            action_tag.append(temp_list[key])
+        # temp_list=action_list[0]
+        # for key in temp_list:
+        #     action_tag.append(temp_list[key])
+        action_tag=action_list
+
         output = dict_msg['Output']
         f = open("action_repo.txt",'r+')
         lines=f.readlines()
         f.close()
         n=len(action_tag)
-    #    print("Number of action accociated "+str(n))
-        userid=dict_msg['UserID']
-
+        # print("Number of action accociated "+str(n))
+        # print("actions", action_tag)
+        userid=dict_msg['UserId']
+        # print("lines",lines)
         for i in range(n):
             for line in lines:
+                # print(action_tag[i],"::::::::::::::::",line)
                 name=line.split()
+                # print("1 !!@@",name[0],":",action_tag[i])
                 if(name[0]==action_tag[i]):
+                    # print("2 !!@@",name[0],":",action_tag[i])
     #                print(name[1])
-                    call_file=name[1]+" "+str(userid)+" "+str(output)
+                    call_file=name[1]+" "+str(userid)+" "+"'"+str(output)+"' &"
+                    print("\n\ncall",call_file)
                     os.system(call_file)
     #                email_method()
-                    break
+                    # break
 #     action_list = dict_msg['Action']
 #     print("Number of dict accociated "+str(len(action_list)))
 #     action_tag=[]

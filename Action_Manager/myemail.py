@@ -2,6 +2,8 @@
 import smtplib 
 import sys
 
+
+print("@@@@@@@@@Send email",sys.argv[1],"to ",sys.argv[2])
 mailto=sys.argv[1]
 s = smtplib.SMTP('smtp.gmail.com', 587) 
 s.starttls() 

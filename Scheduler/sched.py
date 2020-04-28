@@ -23,56 +23,36 @@ import communication_module as cm
 
 current_process=None
 
+## using global deque with firstcome first serve schedule.
 dq = collections.deque() 
-# consumer = KafkaConsumer(
-#      topic_own,
-#      bootstrap_servers=['localhost:9092'],
-#      auto_offset_reset='latest',
-#      enable_auto_commit=True,
-#      value_deserializer=lambda x: loads(x.decode('utf-8')))
-
-
-# producer = KafkaProducer(bootstrap_servers=['localhost:9092'],
-#                          value_serializer=lambda x: 
-#                          dumps(x).encode('utf-8'))
-
-
-
 
 queue=[]
+meta_data=None
 
-def algo1(): 
-    # print("algo1 is running")
-    i=1 
-  
-def algo2(): 
-    i=2
-    # print("algo2 is running") 
-  
-def algo3(): 
-    i=3
-    # print("algo3 is running")
+#funstion to send data to service life cycle module when its turn comes.
+def to_servicelifecycle():
+	global meta_data
+	global dq
+	
+	cm.Schedular_to_ServiceLifeCycle_Producer_interface(meta_data)
+
 global x,y,z,a
 
-def IAD():
-    i=4
+#the below functions are called according to the scheduling requirement of the user
 
-    
 def regular(days,start_time,duration,algo):
     global x
-    # x=schedule.every(int(duration)).days.at(start_time).do(eval(algo))
+    x=schedule.every().days.at(start_time).do((to_servicelifecycle))
 
 
-def notregular(start_time,end_time,duration,algo):
+def notregular(days,start_time,duration,algo):
     global y
-    # y=schedule.every(int(duration)).tuesday.at(start_time).do(eval(algo)) 
+    y=schedule.every().days.at(start_time).do((to_servicelifecycle)) 
 
 
 def immediate(duration,algo):
     global z
-    # print("here")
-    # z=schedule.every(int(duration)).seconds.do(eval(algo))
-    # z=schedule.every(int(duration)).seconds.do(algo1) 
+    z=schedule.every().seconds.do(to_servicelifecycle) 
 
 
 def period(duration,start,algo):
@@ -81,55 +61,27 @@ def period(duration,start,algo):
     name=algo
     this_module = sys.modules[__name__]
     
-    a=schedule.every(int(duration)).hour.do(getattr(this_module, name)) 
+    a=schedule.every(int(duration)).minutes.at(start).do((to_servicelifecycle))
 
 
+#If priority is high push the data in front of the queue
 def inputq(msg):
     global dq
-    # global current_process
-    # current_process=msg
-    # msg= json.loads(msg)
-    # print("1")
-    # print(msg["priority"])
 
-    # msg=eval(msg)
-    # print("2") 
-    # print("type",type(msg))
-    # print(" length",len(msg))
-    # print("here")
-    cm.Schedular_to_ServiceLifeCycle_Producer_interface(msg)
-
-    # for message in consumer:
-        
-    #     print("inside dequeue")
-    #     # start_new_thread(recv_thread,())
-    #     message = message.value
     if(msg["priority"]=="high"):
         # print("hey ya")
         dq.appendleft(msg)
     else:
         dq.append(msg)
-    print("message",msg)
+    # print("message",msg)
 
+#function  to receive meta_data from application manager
 def to_recv():
-    # start_new_thread(inputq,())
-    # print("yaha")
-    cm.ApplicationManager_to_Scheduler_interface(inputq)
-
-    
-    
-def to_send():
-    global topic_own
-    
-    print("to whom?")
-    topic=input()
-    data=input()
-    data=topic_own+" "+data
-    producer.send(topic,value=data)
-    sleep(1)
-    
+	cm.ApplicationManager_to_Scheduler_interface(inputq)
 
 
+#function to check is there is any pending service to br scheduled . For example a service is to be scheduled on "tuesdays",
+#this function will ensure that it pushed in deque and considered 
 def pending():
     while True: 
               
@@ -138,25 +90,23 @@ def pending():
 
 i=0
 start_new_thread(to_recv,())
+
+## Calling respective functions according to the scheduling information received
 def main():
     while(1):
 
         global dq
-        # global loq
+        global meta_data
         while(len(dq)>0):
-            # print("length of queue",loq)
+
             global i
             i=i+1
-            meta_data=dq.pop()
-            # loq=loq-1
-            # print("in while",meta_data)
-            # print(i)
+            meta_data=dq.popleft()
+
             if(meta_data["form"]=="run"):
 
 
-                if (meta_data["days"]=="everyday"):
-                    # strg="geeks"
-                    # schedule.every(1).seconds.do(eval("geeks"))
+                if (meta_data["days"]=="everyday" and meta_data["request_type"]!="immediate" ):
                     regular(meta_data["days"],meta_data["start_time"],meta_data["duration"],meta_data["algo"])
                    
 
@@ -175,7 +125,6 @@ def main():
 
 
             else:
-
                 schedule.cancel_job(eval(meta_data["algo"]))
 
 
@@ -191,3 +140,4 @@ if __name__ == "__main__":
 
 
     
+

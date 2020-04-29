@@ -50,9 +50,9 @@ def notregular(days,start_time,duration,algo):
     y=schedule.every().days.at(start_time).do((to_servicelifecycle)) 
 
 
-def immediate(duration,algo):
-    global z
-    z=schedule.every().seconds.do(to_servicelifecycle) 
+# def immediate(duration,algo):
+#     global z
+#     z=schedule.every().day.do(to_servicelifecycle) 
 
 
 def period(duration,start,algo):
@@ -115,7 +115,9 @@ def main():
 
                 elif(meta_data["request_type"]=="immediate"):
                     print("Scheduling immediately")
-                    immediate(meta_data["duration"],meta_data["algo"])
+                    cm.Schedular_to_ServiceLifeCycle_Producer_interface(meta_data)
+                    # immediate(meta_data["duration"],meta_data["algo"])
+
 
                 elif(meta_data["request_type"]=="periodic"):
                     print("in periodic scheduling")

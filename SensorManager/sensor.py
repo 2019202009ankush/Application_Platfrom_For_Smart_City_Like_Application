@@ -1,9 +1,8 @@
 import json
 from bson import json_util
-import producer_json
 import random
 import time
-
+import producer_json
 def sensor_run(i,typ,loc,ip,port):
 	
 	with open('meta.json') as f:
@@ -63,7 +62,7 @@ def sensor_run(i,typ,loc,ip,port):
 				data+=str(random.randrange(80,100))
 	
 	if typ == 'temperature':
-		f=open('../Dashboard/temperature.txt','a+')
+		f=open('../AlgorithmRepo/SmartClass/Emergency Fire Alarm Service/Template/temperature.txt','a+')
 		f.write(str(data))
 		f.write("\n")
 		f.close()

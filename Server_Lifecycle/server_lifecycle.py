@@ -134,8 +134,8 @@ def handle_service_LC():
 
 get_all_server_details()
 start_server()
-start_server()
-start_server()
+# start_server()
+# start_server()
 t1 = threading.Thread(target=handle_runtime, args=()) 
 t1.start() 
 t2 = threading.Thread(target=handle_service_LC , args=()) 

@@ -25,7 +25,7 @@ def index():
     <h3>Ploting the temp data</h3>
     <img src="/image.svg"
          alt="random points as svg"
-         height="200"
+         height="800" width="800"
     >
     """
     # from flask import render_template

@@ -11,7 +11,7 @@ def run(loc,topic,id):
 	mess['ServiceName']=sys.argv[3]
 
 	for val in communication_module.Sersor_Stream(topic,id):
-		print(int(val['data']))
+		# print(int(val['data']))
 		if(int(val['data'])==1):
 			mess["ActionType"]="Notification"
 			mess["Action"]=["email","notification"]

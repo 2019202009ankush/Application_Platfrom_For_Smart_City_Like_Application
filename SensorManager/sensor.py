@@ -62,7 +62,7 @@ def sensor_run(i,typ,loc,ip,port):
 				data+=str(random.randrange(80,100))
 	
 	if typ == 'temperature':
-		f=open('../AlgorithmRepo/SmartClass/Emergency Fire Alarm Service/Template/temperature.txt','a+')
+		f=open('../AlgorithmRepo/SmartClass/Emergency Fire Alarm Service/temperature.txt','a+')
 		f.write(str(data))
 		f.write("\n")
 		f.close()

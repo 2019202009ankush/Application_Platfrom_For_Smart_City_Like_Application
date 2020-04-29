@@ -3,6 +3,9 @@ RUN apt-get update
 RUN apt-get -y install python3 
 RUN apt-get -y install python3-pip 
 RUN pip3 install kafka-python
+RUN pip3 install psutil
+RUN pip3 install schedule 
+
 ADD . /platform
 WORKDIR /platform
 CMD ["python3", "/platform/Deployment_Manager/DeploymentManager.py"]

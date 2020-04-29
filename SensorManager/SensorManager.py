@@ -5,6 +5,8 @@ import threading
 import communication_module
 
 def event1(msg):
+	# print("pwdddd!!!!!!!!!",os.system(pwd))
+	# print("mgdddd",msg)
 	loc=msg['location']
 	sensors=msg['algoid']['sensors']
 	
@@ -16,23 +18,33 @@ def event1(msg):
 			lines = f.read().splitlines()
 	ids=[]
 	topics=[]
+	# print("lines!!!!!",lines)
 	if loc != 'all':
+		# print("Not all!!!!!!!!!!!!!!")
 		sensors_obj=loc+'_'+sensors[0]
 		for l in lines:
 			if(l.split(':')[0]==sensors_obj):
 				ids.append(l.split(':')[1].split('_')[1])
 				topics.append(l.split(':')[1].split('_')[0])
 	else:
-		
 		sensors_obj=sensors[0]
+		# print("All!!!!!!!!!!!!!!")
+		print("sensobj",sensors_obj)
 		for l in lines:
-			if(l.split(':')[0].split('_')[2]==sensors_obj):
-				ids.append(l.split(':')[1].split('_')[1])
-				topics.append(l.split(':')[1].split('_')[0])
+			# print("!!@@llll",l.split(':')[0].split('_')[2])
+			if(sensors_obj.startswith(l.split(':')[0].split('_')[2])):
+				if sensors_obj.startswith("numeric"):
+					ids.append(l.split(':')[1].split('_')[2])
+					topics.append(l.split(':')[1].split('_')[0]+"_"+l.split(':')[1].split('_')[1])
+				else:
+					ids.append(l.split(':')[1].split('_')[1])
+					topics.append(l.split(':')[1].split('_')[0])
 	
 	msg['topics']=topics
 	msg['ids']=ids
 	print("Sensor Manager",msg)
+	# print("iiii",ids)
+	# print("tttt",topics)
 	th1 = threading.Thread(target=sensor.sensor,kwargs={'id':ids[0],'typ':topics[0],'loc':loc,'ip':'0.0.0.0','port':'9557'})
 	th1.start()
 	communication_module.SensorManager_to_DeployManager_Producer_interface(msg)

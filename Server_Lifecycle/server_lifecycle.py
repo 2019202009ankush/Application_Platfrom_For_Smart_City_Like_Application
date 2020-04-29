@@ -58,7 +58,7 @@ def start_server():
 	logmsg['component']='Server_lifecycle'
 	logmsg['msg']=str(_server)+" has been started"
 	cm.common_Logger_Producer_interface(logmsg)
-	print("Logmsg!!!!!!",logmsg)
+	# print("Logmsg!!!!!!",logmsg)
 	print(server_details[_server],_server,server_details[_server]['ip'],server_details[_server]['port'])
 	cmd="gnome-terminal -- python3 -i "+"'"+cwd+"/server.py' "+str(_server)+" "+str(server_details[_server]['ip'])+" "+str(server_details[_server]['port'])
 	os.system(cmd)

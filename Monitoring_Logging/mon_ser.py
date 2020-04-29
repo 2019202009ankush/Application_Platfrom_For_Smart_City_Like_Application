@@ -28,8 +28,8 @@ mydb = myclient["hackdb"]
 
 
 def eventReceiveRuntimeServerToMonMod(m1):
-    print("receieved:::",m1)
-    print(type(m1))
+    # print("receieved:::",m1)
+    # print(type(m1))
     message = m1
     if (isinstance(message, dict) ):
     	res=message
@@ -48,7 +48,7 @@ fun3=eventReceiveRuntimeServerToMonMod
 
 
 def threaded_servers():
-	print ("In thread servers")
+	# print ("In thread servers")
 	while True:
 		# sleep(1)
 		communication_module.Runtime_Servers_to_Monitoring_Module_interface(fun3)

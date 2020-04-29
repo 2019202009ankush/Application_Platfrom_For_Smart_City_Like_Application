@@ -14,7 +14,7 @@ def run(loc,topic,id):
 	mess['AppName']=sys.argv[2]
 	mess['ServiceName']=sys.argv[3]
 
-	for val in communication_module.Sersor_Stream(topic,id1):
+	for val in communication_module.Sersor_Stream(topic,id):
 
 		temp=int(val['data'])
 

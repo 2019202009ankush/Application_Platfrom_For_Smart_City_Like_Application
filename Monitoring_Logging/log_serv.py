@@ -41,19 +41,19 @@ commonLog = KafkaConsumer(
 
 
 def eventReceiveLogData(m1):
-    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!receieved log data:::",m1)
+    # print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!receieved log data:::",m1)
     message = m1
     if (isinstance(message, dict) ):
     	res=message
     else:
     	res = ast.literal_eval(message) 
     # print("Message receieved:",(res),type(res))
-    print("table to store:",res['component'])
+    # print("table to store:",res['component'])
     # mycol = mydb["logtable"]
     mycol = mydb[res['component']]
 	# mydict = { "name": "John", "address": "Highway 37" }
     x = mycol.insert_one(res)
-    print("stored in table\n\n")
+    # print("stored in table\n\n")
 
 
 fun=eventReceiveLogData
@@ -61,7 +61,7 @@ fun=eventReceiveLogData
 
 
 def threaded():
-	print ("In thread!!!!!!!!!!!!")
+	# print ("In thread!!!!!!!!!!!!")
 	while True:
 		# sleep(2)
 		# print("hi")

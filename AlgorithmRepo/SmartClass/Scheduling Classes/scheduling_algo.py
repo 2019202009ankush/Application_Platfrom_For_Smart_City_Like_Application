@@ -135,7 +135,8 @@ def create_schedule(msg):
 
 	########
 	#output to file
-	f=open('printdata.html','w')
+	curpath=str(os.path.dirname(os.path.realpath(__file__)))
+	f=open(curpath+'/printdata.html','w')
 	tststr_html="<pre>"+tststr+"</pre>"
 	f.write(tststr_html)
 	f.close()
@@ -213,11 +214,15 @@ def threaded_cls_detaisl():
 	while True:
 		communication_module.common_Attendence_interface(fun1)
 
+
+
 def read_init_data(sensor_data):
+	curpath=str(os.path.dirname(os.path.realpath(__file__)))
+	# print("\n\n\npwddddd",os.path.dirname(os.path.realpath(__file__)),"\n\n\n\n")
 	# print("sensor_data",sensor_data)
 	global class_details,map_subj_all,map_room_sub,map_sid_room,capacity_room,map_sid_subj_prof,map_room_sid,acadoffile_email
 
-	f1=open("schedule.txt")
+	f1=open(curpath+"/schedule.txt")
 	lines1=f1.readlines()
 	# print(lines1)
 	# based on current data_current schd=edule for tomorrow

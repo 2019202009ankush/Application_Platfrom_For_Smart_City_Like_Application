@@ -540,12 +540,29 @@ def ApplicationManager_to_Scheduler_interface(func_name):
 			#print(mess)
 			th = threading.Thread(target=func_name,kwargs={'msg':mess})
 			th.start()
+
             
 
 def ApplicationManager_to_Scheduler_Producer_interface(mess):
 	producer_json.send_message('ApplicationManager_to_Scheduler',mess)
 
+# Temperature
+def Temperature_interface(func_name):
+	from kafka import KafkaConsumer
+	topic='Temperature'
+	
+	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
 
+	# consumer.subscribe([topic]) 
+
+	for message in consumer:
+			mess= (message.value)
+			#print(mess)
+			th = threading.Thread(target=func_name,kwargs={'msg':mess})
+			th.start()
+            
+
+	
 
 
 # Sensor Stream

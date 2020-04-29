@@ -4,10 +4,11 @@ RUN apt-get -y install python3
 RUN apt-get -y install python3-pip 
 RUN pip3 install kafka-python
 RUN pip3 install psutil
-RUN pip3 install schedule 
-
-ADD . /platform
-WORKDIR /platform
-CMD ["python3", "/platform/Deployment_Manager/DeploymentManager.py"]
-CMD ["python3", "/platform/Action_Manager/actionserver.py"]
-CMD ["python3", "/platform/Scheduler/sched.py"]
+RUN pip3 install schedule
+RUN pip3 install bson
+RUN pip3 install pymongo
+ADD . /
+WORKDIR /
+CMD ["python3", "/Deployment_Manager/DeploymentManager.py"]
+CMD ["python3", "/Action_Manager/actionserver.py"]
+CMD ["python3", "/Scheduler/sched.py"]

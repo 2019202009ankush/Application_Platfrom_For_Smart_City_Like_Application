@@ -570,7 +570,7 @@ def Temperature_interface(func_name):
 def Sersor_Stream(type,id):
 	from kafka import KafkaConsumer
 	topic= type+'_'+id
-	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',auto_offset_reset='earliest',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
+	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
 
 	# consumer.subscribe([topic]) 
 

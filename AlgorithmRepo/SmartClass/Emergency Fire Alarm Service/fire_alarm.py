@@ -1,8 +1,11 @@
 import sys
-sys.path.insert(0,"../communication_module")
+sys.path.insert(0,"../../../communication_module")
 
 import communication_module
 import statistics
+from subprocess import Popen
+import subprocess
+# process1 = subprocess.Popen(["python3", "./Template/dashboard.py"])
 
 def run(loc,topic,id):
 
@@ -20,6 +23,7 @@ def run(loc,topic,id):
 			count+=1
 			# print(len(lis),val)
 			if(count>=5):
+				process1 = subprocess.Popen(["python3", "/Template/dashboard.py"])
 				mess["ActionType"]="Conrol"
 				mess["Action"]=str('ON_FIRE_ALRAM_'+loc)
 				#print("Sending",mess)
@@ -28,7 +32,7 @@ def run(loc,topic,id):
 			count-=1
 			if(count<5):
 				mess["ActionType"]="Conrol"
-				mess["Action"]=str('ON_FIRE_ALRAM_'+loc)
+				mess["Action"]=str('OFF_FIRE_ALRAM_'+loc)
 				#print("Sending",mess)
 				communication_module.RuntimeServer_to_ActionServer_Producer_interface(mess)
 

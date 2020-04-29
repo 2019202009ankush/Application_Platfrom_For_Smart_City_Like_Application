@@ -131,7 +131,8 @@ def create_schedule(msg):
 				break
 		tststr=tststr+str(map_room_sub[i])+" "+str(i)+" : "+str(val)+"\n"
 
-	print(tststr)#######subject old room and new room 
+	print(tststr)
+	#######subject old room and new room 
 
 	########
 	#output to file
@@ -173,8 +174,10 @@ def create_schedule(msg):
 	# print("lis1!!!!!!!!",lis1tosend)
 	# print("lis2!!!!!!!!",lis2tosend)
 	mess1={}
-	mess1['UserID']=acadoffile_email
-	mess1['App_Name']="Reschedule"
+	mess1['UserId']=acadoffile_email
+	mess1['AppName']=sys.argv[2]
+	mess1['ServiceName']=sys.argv[3]
+	mess1['Action']=['email']
 	mess1['ActionType']="Notification"
 	# mess1['Output']=lis2tosend
 	msg1=""
@@ -182,7 +185,7 @@ def create_schedule(msg):
 		msg1=msg1+i[1]+" - "+i[0]+"\n"
 	mess1['Output']= msg1 
 
-	print("mess1::::",mess1)
+	# print("mess1::::",mess1)
 
 	communication_module.RuntimeServer_to_ActionServer_Producer_interface(mess1)
 	
@@ -191,12 +194,14 @@ def create_schedule(msg):
 		email=i[0]
 		roomno=i[1]
 		mess1={}
-		mess1['UserID']=email
-		mess1['App_Name']="Reschedule"
-		mess1['Action_type']="Notification"
-		mess1['Output']="RoomNo:-"+str(roomno)
+		mess1['UserId']=email
+		mess1['AppName']=sys.argv[2]
+		mess1['ServiceName']=sys.argv[3]
+		mess1['ActionType']="Notification"
+		mess1['Action']=['email']
+		mess1['Output']="\n\nNew RoomNo for tomorrow is as follows :-"+str(roomno)+"\n"
 
-		print("mess1::::",mess1)
+		# print("mess1::::",mess1)
 		communication_module.RuntimeServer_to_ActionServer_Producer_interface(mess1)
 
 	# communication_module.RuntimeServer_to_ActionServer_Producer_interface(lis2tosend)
@@ -241,7 +246,7 @@ def read_init_data(sensor_data):
 		l1=i.strip()
 		# print(l1)
 		ls=l1.split(":")
-		print(ls)
+		# print(ls)
 		k=k+1
 		class_details[ls[0]]=[sensor_data[k][2],ls[5]]### {class_no: [sensor , capacity] }
 
@@ -274,11 +279,8 @@ def read_init_data(sensor_data):
 
 
 
-
-
-
 print("Algo Started")
-print("argsss",len(sys.argv))
+# print("argsss",len(sys.argv))
 # for i in range(sys.argv):
 sensor_count=int(sys.argv[5])
 print("sensor_ct",sensor_count)
@@ -303,21 +305,26 @@ for i in range(sensor_count):
 
 
 read_init_data(sensor_data)
+# print("init data readed sucess!!!")
 # start_new_thread(threaded_cls_detaisl,())
-x=2
-y=3
+
+# for i in range(len(sys.argv)):
+# 	print(i,"=============",sys.argv[i])
+x=6
+y=7
 
 while(1):
 	time.sleep(1)
 	sensor_data={}
-	x=2
-	y=3
+	x=6
+	y=7
 	for i in range(sensor_count):
 		topic=sys.argv[x]
 		id=sys.argv[y]
 		x=x+2
 		y=y+2
 		lis=list()
+		# print("topic,id",topic,id)
 		for val in communication_module.Sersor_Stream(topic,id):
 			val1=val["data"]
 			lis=val1.split(":")

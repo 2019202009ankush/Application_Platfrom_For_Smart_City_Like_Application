@@ -1,0 +1,102 @@
+ 
+<!DOCTYPE html>
+<html>
+<style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=password], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=checkbox], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+<div>
+    <label for="fname">USER NAME</label>
+    <input type="text" id="fname" name="user_name" placeholder="Enter user name here">
+    <label for="fname">PASSWORD</label>
+    <input type="password" id="fname" name="pwd" placeholder="Enter password here">
+</div>
+<head>
+<title>Upload</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</head>
+<body>
+
+<form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+
+    <!-- <strong>Files:</strong><br> -->
+    <input id="file-picker" type="file" name="file" accept="image/*" multiple>
+    <div id="msg"></div>
+    <input type="submit" value="Upload!" id="upload-button">
+</form>
+</body>
+<script>
+
+    $("#file-picker").change(function(){
+
+        var input = document.getElementById('file-picker');
+
+        for (var i=0; i<input.files.length; i++)
+        {
+        //koala.jpg, koala.JPG substring(index) lastIndexOf('a') koala.1.jpg
+            var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
+
+            if ((ext == 'zip') || (ext == 'txt'))
+            {
+                $("#msg").text("Files are supported")
+            }
+            else
+            {
+                $("#msg").text("Files are NOT supported")
+                document.getElementById("file-picker").value ="";
+            }
+
+        }
+
+
+    } );
+
+</script>
+</html>

@@ -17,7 +17,13 @@
 5. Call the Sample consumer interface
    communication_module.ApplicationManager_to_ServiceLifeCycle_interface(fun) [see ServiceLifeCycle.py ]
 6. Videolink: https://www.youtube.com/watch?v=rixFLCBNLao&t=333s
---------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+###### Rules to visulaize any kafka topic
+1. cd SensorManger
+2. python3 (open python terminal)
+3. import UI
+4. UI.UI(topic_name)
+----------------------------------------------------------------------------------------------------------------------------
 
 
 docker run --rm --network=host new

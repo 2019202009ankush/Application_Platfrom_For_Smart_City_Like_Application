@@ -45,8 +45,13 @@ def event1(msg):
 	print("Sensor Manager",msg)
 	# print("iiii",ids)
 	# print("tttt",topics)
-	th1 = threading.Thread(target=sensor.sensor,kwargs={'id':ids[0],'typ':topics[0],'loc':loc,'ip':'0.0.0.0','port':'9557'})
-	th1.start()
+	
+	for i in range(len(topics)):
+		th1 = threading.Thread(target=sensor.sensor,kwargs={'id':ids[i],'typ':topics[i],'loc':loc,'ip':'0.0.0.0','port':'9557'})
+		th1.start()
+
+
+
 	communication_module.SensorManager_to_DeployManager_Producer_interface(msg)
 
 

@@ -3,10 +3,9 @@ sys.path.insert(0,"../../../communication_module")
 
 import communication_module
 import statistics
-from subprocess import Popen
-import subprocess
-# process1 = subprocess.Popen(["python3", "./Template/dashboard.py"])
+import os
 
+# print('hi')
 def run(loc,topic,id):
 
 	lis=[]
@@ -23,7 +22,7 @@ def run(loc,topic,id):
 			count+=1
 			# print(len(lis),val)
 			if(count>=5):
-				process1 = subprocess.Popen(["python3", "/Template/dashboard.py"])
+				os.system("python3 ./Template/dashboard.py &")
 				mess["ActionType"]="Conrol"
 				mess["Action"]=str('ON_FIRE_ALRAM_'+loc)
 				#print("Sending",mess)

@@ -19,19 +19,19 @@ def run(loc,topic,id):
 		temp=int(val['data'])
 
 		if temp<=59 and temp>=10:
-			mess["ActionType"]="Conrol"
-			mess["Action"]=str('LOW_TEMP :'+(str(val['data'])))			
+			mess["ActionType"]="Control"
+			mess["Output"]=str('LOW_TEMP :'+(str(val['data'])))			
 
 		elif temp>=60 and temp<=100:
-			mess["ActionType"]="Conrol"
-			mess["Action"]=str('NORMAL_TEMP :'+str(val['data']))
+			mess["ActionType"]="Control"
+			mess["Output"]=str('NORMAL_TEMP :'+str(val['data']))
 
 		elif temp>=101 and temp<=120:
-			mess["ActionType"]="Conrol"
-			mess["Action"]=str('HIGH_TEMP :'+str(val['data']))			
+			mess["ActionType"]="Control"
+			mess["Output"]=str('HIGH_TEMP :'+str(val['data']))			
 
 
-		display=mess["Action"]
+		display=mess["Output"]
 		file=open("display.txt","w+")
 		file.write(display)
 

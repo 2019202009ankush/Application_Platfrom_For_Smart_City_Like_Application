@@ -276,6 +276,14 @@ def read_init_data(sensor_data):
 	# print("\n\n")
 	# print("map1;;;;;;;;;",sensor_data)
 
+	######open chrome
+	curpath=str(os.path.dirname(os.path.realpath(__file__)))
+
+	page=curpath+"/printdata.html"
+	cmd="google-chrome-stable --no-sandbox '"+page+"'"
+	print("command::::",cmd)
+	os.system(cmd)
+
 
 
 
@@ -293,8 +301,9 @@ for i in range(sensor_count):
 	id=sys.argv[y]
 	x=x+2
 	y=y+2
+	# print("in 1st for loop:")
 	for val in communication_module.Sersor_Stream(topic,id):
-		# print("val:::",val,type(val))
+		print("val:::",val,type(val))
 		val1=val["data"]
 		lis=val1.split(":")
 		lis.append(id)

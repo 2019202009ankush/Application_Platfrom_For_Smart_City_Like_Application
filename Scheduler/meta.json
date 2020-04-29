@@ -4,21 +4,16 @@
 	{
 		"UserId":"harshit@gamil.com",
 		"AppName":"SmartClass",
-		"algoid":"FAS",
+		"algoid":"IAD",
 		"priority":"medium",
 		"request_type":"immediate",
 		"days":"",
-		"sensor_type":"water",
 		"start_time":"12:00",
-		"end_time":"18:00",
-		"duration":"1",
-		"algo":"algo1",
+		"duration":"10",
 		"form":"run",
 		"action":"",
 		"notification":"",
 		"location":"obh_112"
-		
-
 	} 
 ]
 }

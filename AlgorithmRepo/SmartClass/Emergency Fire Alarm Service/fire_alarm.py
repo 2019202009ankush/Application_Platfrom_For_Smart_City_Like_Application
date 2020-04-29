@@ -5,7 +5,7 @@ import communication_module
 import statistics
 from subprocess import Popen
 import subprocess
-
+# process1 = subprocess.Popen(["python3", "./Template/dashboard.py"])
 
 def run(loc,topic,id):
 

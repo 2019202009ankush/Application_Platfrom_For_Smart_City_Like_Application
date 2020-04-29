@@ -25,7 +25,7 @@ def index():
     <h3>Ploting the temp data</h3>
     <img src="/image.svg"
          alt="random points as svg"
-         height="800" width="800"
+          
     >
     """
     # from flask import render_template
@@ -35,15 +35,24 @@ def index():
 
 
 @app.route("/image.svg")
-def plot_svg(num_x_points=50):
+def plot_svg(num_x_points=20):
     """ renders the plot on the fly.
     """
     fig = Figure()
-    axis = fig.add_subplot(1, 1, 1)
+    axis = fig.add_subplot()
     with open('temperature.txt') as f:
             lines = f.read().splitlines()
-    print(lines)
+    # print(lines)
     axis.plot(lines)
+#     axis.set_ylabel('V')
+#     axis.set_xlabel('t')
+
+# # Turn off tick labels
+#     axis.set_yticklabels([])
+#     axis.set_xticklabels([])
+
+#     plt.show()
+    # plt.axis('off')
 
     output = io.BytesIO()
     FigureCanvasSVG(fig).print_svg(output)

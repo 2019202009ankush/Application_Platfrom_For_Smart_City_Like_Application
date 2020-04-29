@@ -1,4 +1,7 @@
 from flask import Flask, redirect, url_for ,render_template,request
+import webbrowser
+
+webbrowser.open('http://127.0.0.1:3333/')
 # from test import i,name,age
 
 # from ac_temp import run
@@ -8,12 +11,12 @@ from flask import Flask, redirect, url_for ,render_template,request
 # print(i)
 
 
-output=None
 app = Flask(__name__)
 
-@app.route("/dashboard")
+@app.route("/")
 
 def dashboard():
+	
 	file=open("display.txt","r+")
 	display=file.read()
 	print("out_put 	RECEIVED",display)
@@ -21,4 +24,6 @@ def dashboard():
 
 
 if __name__ == "__main__":
-    app.run(port=4555, debug=True)
+    app.run(port=3333, debug=True)
+
+

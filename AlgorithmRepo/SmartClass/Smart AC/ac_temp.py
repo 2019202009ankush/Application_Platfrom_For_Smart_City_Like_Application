@@ -4,6 +4,7 @@ sys.path.insert(0,"../communication_module")
 import communication_module
 import statistics
 display=""
+import os
 
 def run(loc,topic,id):
 	print("AC control Algorithm running")
@@ -19,20 +20,21 @@ def run(loc,topic,id):
 		temp=int(val['data'])
 
 		if temp<=59 and temp>=10:
-			mess["ActionType"]="Control"
-			mess["Output"]=str('LOW_TEMP :'+(str(val['data'])))			
+			mess["ActionType"]="Conrol"
+			mess["Action"]=str('LOW_TEMP :'+(str(val['data'])))			
 
 		elif temp>=60 and temp<=100:
-			mess["ActionType"]="Control"
-			mess["Output"]=str('NORMAL_TEMP :'+str(val['data']))
+			mess["ActionType"]="Conrol"
+			mess["Action"]=str('NORMAL_TEMP :'+str(val['data']))
 
 		elif temp>=101 and temp<=120:
-			mess["ActionType"]="Control"
-			mess["Output"]=str('HIGH_TEMP :'+str(val['data']))			
+			mess["ActionType"]="Conrol"
+			mess["Action"]=str('HIGH_TEMP :'+str(val['data']))			
 
 
-		display=mess["Output"]
-		file=open("display.txt","w+")
+		display=mess["Action"]
+		curpath=str(os.path.dirname(os.path.realpath(__file__)))
+		file=open(curpath+"/display.txt","w+")
 		file.write(display)
 
 		# print(mess["Action"])

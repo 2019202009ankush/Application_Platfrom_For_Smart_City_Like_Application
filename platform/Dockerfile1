@@ -9,8 +9,6 @@ RUN pip3 install bson
 RUN pip3 install pymongo
 ADD . /
 WORKDIR /
-CMD ["python3", "-u","/Deployment_Manager/DeploymentManager.py"]
-CMD ["python3", "-u","/Action_Manager/actionserver.py"]
-CMD ["python3", "-u","/Scheduler/sched.py"]
+
 
 

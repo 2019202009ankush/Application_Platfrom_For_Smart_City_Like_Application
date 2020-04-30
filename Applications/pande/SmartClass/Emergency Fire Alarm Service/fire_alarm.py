@@ -4,7 +4,7 @@ sys.path.insert(0,"../communication_module")
 import communication_module
 import statistics
 import os
-
+# os.system("python3 dashboard.py &")
 # print('hi')
 def run(loc,topic,id):
 
@@ -18,13 +18,12 @@ def run(loc,topic,id):
 	count=0
 	print(topic,id)
 	for val in communication_module.Sersor_Stream(topic,id):
-		if int(int(val['data'])+100) > 200: #For 5 value > 200 F 
+		if int(val['data'])+100 > 200: #For 5 value > 200 F 
 			count+=1
 			# print(len(lis),val)
-			if(count>=1):
-				curpath=(os.path.dirname(os.path.realpath(__file__)))
-				# print("cur path::::::",curpath)
-				cmd="python3 '"+curpath+"/Template/dashboard.py' &"
+			if(count>=5):
+				curpath=str(os.path.dirname(os.path.realpath(__file__)))
+				cmd="python3 '"+curpath+"/dashboard.py' &"
 				os.system(cmd)
 				mess["ActionType"]="Control"
 				mess["Output"]=str('ON_FIRE_ALRAM_'+loc)
@@ -41,10 +40,10 @@ def run(loc,topic,id):
 			
 			
 
-#print("UserID",sys.argv[1])##abc@gmail.com
-#print("App_Name",sys.argv[2])##
-#print("Action_type",sys.argv[3]) ##"Control/Notification"
-#print("Output",sys.argv[4])##Output eg temp
+# #print("UserID",sys.argv[1])##abc@gmail.com
+# #print("App_Name",sys.argv[2])##
+# #print("Action_type",sys.argv[3]) ##"Control/Notification"
+# #print("Output",sys.argv[4])##Output eg temp
 
 print("Algo Started")
 run(sys.argv[4],sys.argv[6],sys.argv[7])		

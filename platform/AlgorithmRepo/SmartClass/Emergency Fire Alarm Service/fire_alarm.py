@@ -22,16 +22,18 @@ def run(loc,topic,id):
 			count+=1
 			# print(len(lis),val)
 			if(count>=5):
-				os.system("python3 dashboard.py &")
-				mess["ActionType"]="Conrol"
-				mess["Action"]=str('ON_FIRE_ALRAM_'+loc)
+				curpath=str(os.path.dirname(os.path.realpath(__file__)))
+				cmd="python3 '"+curpath+"/dashboard.py' &"
+				os.system(cmd)
+				mess["ActionType"]="Control"
+				mess["Output"]=str('ON_FIRE_ALRAM_'+loc)
 				#print("Sending",mess)
 				communication_module.RuntimeServer_to_ActionServer_Producer_interface(mess)
 		else:
 			# count-=1
 			if(count<5):
-				mess["ActionType"]="Conrol"
-				mess["Action"]=str('OFF_FIRE_ALRAM_'+loc)
+				mess["ActionType"]="Control"
+				mess["Output"]=str('OFF_FIRE_ALRAM_'+loc)
 				#print("Sending",mess)
 				communication_module.RuntimeServer_to_ActionServer_Producer_interface(mess)
 

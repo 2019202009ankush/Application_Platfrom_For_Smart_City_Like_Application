@@ -1,4 +1,5 @@
 import io
+import os
 import random
 from flask import Flask, Response, request
 from matplotlib.backends.backend_agg import FigureCanvasAgg
@@ -40,7 +41,9 @@ def plot_svg(num_x_points=20):
     """
     fig = Figure()
     axis = fig.add_subplot()
-    with open('temperature.txt') as f:
+    curpath=str(os.path.dirname(os.path.realpath(__file__)))
+    path_temp=curpath+"/temperature.txt"
+    with open(path_temp) as f:
             lines = f.read().splitlines()
     # print(lines)
     axis.plot(lines)
@@ -61,6 +64,6 @@ def plot_svg(num_x_points=20):
 
 if __name__ == "__main__":
     import webbrowser
-
+    # os.system("google-chrome --no-sandbox 'http://127.0.0.1:5000/'")
     webbrowser.open("http://127.0.0.1:5000/")
     app.run(debug=True)

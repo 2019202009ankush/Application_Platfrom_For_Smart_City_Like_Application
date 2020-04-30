@@ -1,10 +1,10 @@
 import sys
-sys.path.insert(0,"../../../communication_module")
+sys.path.insert(0,"../communication_module")
 
 import communication_module
 import statistics
 import os
-
+# os.system("python3 dashboard.py &")
 # print('hi')
 def run(loc,topic,id):
 
@@ -18,17 +18,17 @@ def run(loc,topic,id):
 	count=0
 	print(topic,id)
 	for val in communication_module.Sersor_Stream(topic,id):
-		if int(val['data']) > 200: #For 5 value > 200 F 
+		if int(val['data'])+100 > 200: #For 5 value > 200 F 
 			count+=1
 			# print(len(lis),val)
 			if(count>=5):
-				os.system("python3 ./Template/dashboard.py &")
+				os.system("python3 dashboard.py &")
 				mess["ActionType"]="Conrol"
 				mess["Action"]=str('ON_FIRE_ALRAM_'+loc)
 				#print("Sending",mess)
 				communication_module.RuntimeServer_to_ActionServer_Producer_interface(mess)
 		else:
-			count-=1
+			# count-=1
 			if(count<5):
 				mess["ActionType"]="Conrol"
 				mess["Action"]=str('OFF_FIRE_ALRAM_'+loc)
@@ -38,10 +38,10 @@ def run(loc,topic,id):
 			
 			
 
-#print("UserID",sys.argv[1])##abc@gmail.com
-#print("App_Name",sys.argv[2])##
-#print("Action_type",sys.argv[3]) ##"Control/Notification"
-#print("Output",sys.argv[4])##Output eg temp
+# #print("UserID",sys.argv[1])##abc@gmail.com
+# #print("App_Name",sys.argv[2])##
+# #print("Action_type",sys.argv[3]) ##"Control/Notification"
+# #print("Output",sys.argv[4])##Output eg temp
 
 print("Algo Started")
 run(sys.argv[4],sys.argv[6],sys.argv[7])		

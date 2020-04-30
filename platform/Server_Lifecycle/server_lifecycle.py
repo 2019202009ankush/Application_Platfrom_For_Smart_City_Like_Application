@@ -10,7 +10,7 @@ import random as r
 
 import sys
 sys.path.insert(0, "../communication_module")
-
+print('Now in server life cycle')
 import communication_module as cm
 import producer_json
 
@@ -34,7 +34,7 @@ def handle_runtime():
 
 def get_all_server_details():
 	global server_details
-	f = open('server_details.json',) 
+	f = open('/Server_Lifecycle/server_details.json',) 
 	data = json.load(f) 
 	print(data)
 	server_details=data
@@ -133,9 +133,9 @@ def handle_service_LC():
 
 
 get_all_server_details()
-start_server()
-start_server()
-start_server()
+# start_server()
+# start_server()
+# start_server()
 t1 = threading.Thread(target=handle_runtime, args=()) 
 t1.start() 
 t2 = threading.Thread(target=handle_service_LC , args=()) 

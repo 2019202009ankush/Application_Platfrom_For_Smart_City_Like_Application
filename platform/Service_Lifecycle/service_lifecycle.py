@@ -9,7 +9,7 @@ import sys
 sys.path.insert(0, "../communication_module")
 
 import communication_module as cm
-
+print('Now in service life cycle')
 
 def get_scheduler_msg():
 

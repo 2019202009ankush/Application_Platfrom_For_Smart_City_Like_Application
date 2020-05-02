@@ -1,5 +1,5 @@
 import json
-from bson import json_util
+
 import random
 import time
 import producer_json
@@ -81,13 +81,13 @@ def sensor_run(i,typ,loc,ip,port):
 
 
 def sensor(id,typ,loc,ip,port,start_time=None,end_time=None,itr=None):
-	# ff=open('../SensorManager/SensorRegistry.txt','a+')
-	# s=loc+'_'+typ
+	ff=open('../SensorManager/SensorRegistry.txt','a+')
+	s=loc+'_'+typ
 
-	# meta=typ+'_'+id
-	# ff.write(s+':'+meta)
-	# ff.write("\n")
-	# ff.close()
+	meta=typ+'_'+id
+	ff.write(s+':'+meta)
+	ff.write("\n")
+	ff.close()
 
 	if itr is None:
 		while 1:

@@ -9,5 +9,4 @@ RUN pip3 install bson
 RUN pip3 install pymongo
 ADD . /
 WORKDIR /
-COPY . /
-CMD ["sh", "-c" ,"python3 /Service_Lifecycle/service_lifecycle.py" ,"&", "python3 /Server_Lifecycle/server_lifecycle.py"]
+CMD ["python3 /Deployment_Manager/DeploymentManager.py"]

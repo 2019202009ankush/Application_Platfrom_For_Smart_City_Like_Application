@@ -9,7 +9,4 @@ RUN pip3 install bson
 RUN pip3 install pymongo
 ADD . /
 WORKDIR /
-
-
-
-
+CMD ["python3 /Monitoring_Logging/mon_ser.py"]

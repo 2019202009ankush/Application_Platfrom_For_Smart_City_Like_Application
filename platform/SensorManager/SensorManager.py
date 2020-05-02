@@ -1,8 +1,9 @@
 import sys
 import sensor
-sys.path.insert(0,"../communication_module")
+sys.path.insert(0, "platform/communication_module")
 import threading
 import communication_module
+import os
 
 def event1(msg):
 	# print("pwdddd!!!!!!!!!",os.system(pwd))
@@ -11,10 +12,11 @@ def event1(msg):
 	sensors=msg['algoid']['sensors']
 	
 	print(loc)
-	print(sensors)  
+	print(sensors)
+	curpath=str(os.path.dirname(os.path.realpath(__file__)))  
 	
 	import json 
-	with open('SensorRegistry.txt') as f:
+	with open(curpath+'/SensorRegistry.txt') as f:
 			lines = f.read().splitlines()
 	ids=[]
 	topics=[]
@@ -66,5 +68,7 @@ def event1(msg):
 	#   "ids"    : ["temp1","hum12"]
 	# }
 
+
+print("-------- Sensor Manager ---------------")
 fun=event1
 communication_module.DeployManager_to_SensorManager_interface(fun)

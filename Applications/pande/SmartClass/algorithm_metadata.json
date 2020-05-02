@@ -1,6 +1,6 @@
 {
 	"IAD": {
-		"path": "../Applications/pande/SmartClass/Illegal Access Detection/illegal_access_detect.py",
+		"path": "/Applications/pande/SmartClass/Illegal Access Detection/illegal_access_detect.py",
 		"input": "NaN",
 		"sensors":["doorstep"],
 		"ServiceName":"Illegal Access Detection",
@@ -8,7 +8,7 @@
 		},
 
 	"classSchedule": {
-		"path": "../Applications/pande/SmartClass/Scheduling Classes/scheduling_algo.py",
+		"path": "/Applications/pande/SmartClass/Scheduling Classes/scheduling_algo.py",
 		"input": "NaN",
 		"sensors":["numeric_attandance","numeric_attandance","numeric_attandance","numeric_attandance","numeric_attandance",
 			"numeric_attandance","numeric_attandance","numeric_attandance","numeric_attandance","numeric_attandance"],
@@ -17,7 +17,7 @@
 	},
 
 	"SAC": {
-		"path": "../Applications/pande/SmartClass/Smart AC/ac_temp.py",
+		"path": "/Applications/pande/SmartClass/Smart AC/ac_temp.py",
 		"input": "NaN",
 		"sensors":["temperature"],
 		"ServiceName":"Automated AC Service",
@@ -25,7 +25,7 @@
 		},
 
 	"FAS": {
-		"path": "../Applications/pande/SmartClass/Emergency Fire Alarm Service/fire_alarm.py",
+		"path": "/Applications/pande/SmartClass/Emergency Fire Alarm Service/fire_alarm.py",
 		"input": "NaN",
 		"sensors":["temperature"],
 		"ServiceName":"Emergency Fire Alarm Service",

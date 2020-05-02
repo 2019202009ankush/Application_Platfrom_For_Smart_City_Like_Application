@@ -1,0 +1,10 @@
+sudo docker build -t dock_action -f DockerFiles/DockActionManager .
+sudo docker build -t dock_deploy -f DockerFiles/DockDeployManager .
+sudo docker build -t dock_log -f DockerFiles/DockLogServer .
+sudo docker build -t dock_mon -f DockerFiles/DockMonitoring .
+sudo docker build -t dock_sch -f DockerFiles/DockSchedular .
+sudo docker build -t dock_sensor -f DockerFiles/DockSensorManager .
+sudo docker build -t dock_server -f DockerFiles/DockServerLifeCycle .
+sudo docker build -t dock_service -f DockerFiles/DockServiceLifeCycle .
+sudo docker build -t dock_server1 -f DockerFiles/DockServer1 .
+sudo docker build -t dock_server2 -f DockerFiles/DockServer2 .

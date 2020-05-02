@@ -11,7 +11,7 @@ import os
 import sys
 import shutil
 import time
-sys.path.insert(0, "../communication_module")
+sys.path.insert(0, "platform/communication_module")
 import communication_module as cm
 
 

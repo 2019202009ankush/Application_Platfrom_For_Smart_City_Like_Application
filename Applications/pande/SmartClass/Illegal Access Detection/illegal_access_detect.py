@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0,"../communication_module")
+sys.path.insert(0,"platform/communication_module")
 
 import communication_module
 

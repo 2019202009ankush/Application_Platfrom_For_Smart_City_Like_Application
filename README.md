@@ -27,3 +27,6 @@
 
 
 docker run --rm --network=host new
+sudo docker kill $(sudo docker ps -q)
+
+

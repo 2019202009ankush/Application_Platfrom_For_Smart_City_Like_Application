@@ -4,31 +4,17 @@ import json
 import threading
 
 import sys
-sys.path.insert(0, "../communication_module")
+sys.path.insert(0, "platform/communication_module")
 
 import communication_module as cm
 
 
-sensor_id_returned={	1:{"topic":"Temperatue",
-						"id":"s104"},
-
-						2:{"topic":"Humidity",
-						"id":"t808"},
-					}
-
-
-
 def handle_servicelc_msg(msg):
 
-	print("Service Recieved to deploy:-\n",msg)
+	print("Service Recieved to deploy:-\n")
 
 	request_sensor(msg)
 
-	# sensors=msg_recieved_sensor_mgr()
-
-	# msg['algoid']['sensor']=sensors
-
-	# generate_dockerfile(msg)
 
 		
 
@@ -42,7 +28,7 @@ def generate_dockerfile(msg):
 
 def send_to_server(data):
 	cmd=""
-	cmd=cmd+'"'+"../"+str(data['algoid']['path'])+'"'+" "
+	cmd=cmd+'"'+str(data['algoid']['path'])+'"'+" "
 	cmd=cmd+" "+str(data['UserId'])+" "+'"'+str(data['AppName'])+'"'+" "+'"'+str(data['algoid']['ServiceName'])+'"'+" "+'"'+str(data['location'])+'"'+" "
 	cmd=cmd+str(len(data['topics']))+" "
 	for i in range(len(data['topics'])):
@@ -71,6 +57,7 @@ def msg_recieved_sensor_mgr():
 	return sensor_id_returned
 
 
+print("-------- Deployment Manager ---------------")
 
 th=threading.Thread(target=cm.ServiceLifeCycle_to_DeployManager_interface,kwargs={'func_name':handle_servicelc_msg})
 th.start()

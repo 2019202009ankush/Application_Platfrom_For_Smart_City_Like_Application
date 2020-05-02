@@ -12,7 +12,7 @@ from matplotlib.figure import Figure
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route("/fas")
 def index():
     """ Returns html with the img tag for your plot.
     """
@@ -46,7 +46,7 @@ def plot_svg(num_x_points=20):
     with open(path_temp) as f:
             lines = f.read().splitlines()
     # print(lines)
-    axis.plot(lines)
+    axis.plot(lines[-50:])
 #     axis.set_ylabel('V')
 #     axis.set_xlabel('t')
 

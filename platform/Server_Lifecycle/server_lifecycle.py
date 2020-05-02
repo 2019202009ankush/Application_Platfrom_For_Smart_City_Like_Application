@@ -9,15 +9,15 @@ from datetime import datetime
 import random as r
 
 import sys
-sys.path.insert(0, "../communication_module")
-print('Now in server life cycle')
+sys.path.insert(0, "platform/communication_module")
+print('---------- Now in Server life cycle -------')
 import communication_module as cm
 import producer_json
 
 server_details={}
 
 def handle_service(msg):
-	print("#######",msg)
+	print("#######",msg['service_id'],"for Logging")
 	service_id=msg['service_id']
 	code=msg['code']
 	logmsg={}
@@ -34,9 +34,9 @@ def handle_runtime():
 
 def get_all_server_details():
 	global server_details
-	f = open('/Server_Lifecycle/server_details.json',) 
+	f = open('/platform/Server_Lifecycle/server_details.json',) 
 	data = json.load(f) 
-	print(data)
+	#print(data)
 	server_details=data
 
 
@@ -102,23 +102,14 @@ def handle_service_LC_msg(msg):
 	send_server_details_msg(msg)
 
 def send_server_details_msg(msg):
-	t=r.randint(0,1)
+	t=r.randint(1,2)
 	#s=load_balancer()
-	if(t==0):
-		msg['server_id']="s1"
-		msg['ip']="127.0.0.1"
-		msg['port']="8090"
-	else:
-		msg['server_id']="s2"
-		msg['ip']="127.0.0.1"
-		msg['port']="8091"
+	sv="s"+str(t)
+	msg['server_id']=sv
+	msg['ip']="127.0.0.1"
+	msg['port']="8090"
 
-	if(msg['priority']=='high'):
-		msg['server_id']="s3"
-		msg['ip']="127.0.0.1"
-		msg['port']="8092"
-
-	print("Service to schedule-------->\n",msg)
+	print("Service to schedule-------->\n",sv)
 	logmsg={}
 	logmsg['component']='Server_lifecycle'
 	logmsg['msg']=msg

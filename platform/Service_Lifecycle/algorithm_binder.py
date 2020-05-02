@@ -12,7 +12,8 @@ algorihtm_details={}
 
 def get_algo_details():
 	global algorihtm_details
-	f= open('../../Applications/pande/SmartClass/algorithm_metadata.json',) 
+	curpath=str(os.path.dirname(os.path.realpath(__file__)))
+	f= open('/Applications/pande/SmartClass/algorithm_metadata.json',) 
 	algorihtm_details = json.load(f) 
 
 

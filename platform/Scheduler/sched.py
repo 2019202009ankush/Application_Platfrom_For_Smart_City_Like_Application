@@ -15,14 +15,14 @@ import time
 import collections 
 # topic_own="pandey"
 
-sys.path.insert(0, "../communication_module")
+sys.path.insert(0, "platform/communication_module")
 
 import communication_module as cm
 
 
 
 current_process=None
-
+print("---------- Schedular Started -------------")
 ## using global deque with firstcome first serve schedule.
 dq = collections.deque() 
 
@@ -94,11 +94,11 @@ start_new_thread(to_recv,())
 ## Calling respective functions according to the scheduling information received
 def main():
     while(1):
-
+        #print("Hello")
         global dq
         global meta_data
         while(len(dq)>0):
-
+            print("Hello 1")
             global i
             i=i+1
             meta_data=dq.popleft()

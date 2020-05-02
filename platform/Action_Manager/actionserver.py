@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import sys
-sys.path.insert(0, "../communication_module")
+sys.path.insert(0, "platform/communication_module")
 
 import communication_module
 # import communication_module
@@ -45,7 +45,8 @@ def action_handler(message):
         action_tag=action_list
 
         output = dict_msg['Output']
-        f = open("action_repo.txt",'r+')
+        curpath=str(os.path.dirname(os.path.realpath(__file__)))
+        f = open(curpath+"/action_repo.txt",'r+')
         lines=f.readlines()
         f.close()
         n=len(action_tag)
@@ -96,6 +97,7 @@ def action_handler(message):
 #sys.path.insert(0, "./communication_module")
 #
 #import communication_module as cm
+print("------ Action Manager --------")
 fun1=action_handler
 start_new_thread(communication_module.RuntimeServer_to_ActionServer_interface(fun1),())
 

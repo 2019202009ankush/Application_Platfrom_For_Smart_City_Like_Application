@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, "../communication_module")
+sys.path.insert(0, "platform/communication_module")
 
 
 import communication_module
@@ -37,7 +37,7 @@ def eventReceiveRuntimeServerToMonMod(m1):
     	res = ast.literal_eval(message) 
 
     # res = ast.literal_eval(message) 
-    #print("Message receieved:",(res),type(res))
+    print("Message receieved:",(res),type(res))
     mycol = mydb["mon_data"]
     # mydict = { "name": "John", "address": "Highway 37" }
 
@@ -59,7 +59,7 @@ def threaded_servers():
 start_new_thread(threaded_servers,()) 
 
 
-
+print("Monitoring -------------> ")
 while(1):
 	pass
 

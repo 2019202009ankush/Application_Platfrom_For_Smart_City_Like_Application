@@ -6,14 +6,14 @@ import threading
 from algorithm_binder import *
 
 import sys
-sys.path.insert(0, "../communication_module")
+sys.path.insert(0, "platform/communication_module")
 
 import communication_module as cm
 print('Now in service life cycle')
 
 def get_scheduler_msg():
 
-	f = open('scheduler_msg.json',) 
+	f = open('/platform/Service_Lifecycle/scheduler_msg.json',) 
 	data = json.load(f)
 	print("Service to schedule",data)
 	send_request_serverLC(data)
@@ -23,7 +23,7 @@ def get_scheduler_msg():
 	print("\nRecieved Server details:- ",server)
 	service_data['server']=server[service_data['reqid']]
 
-	print("\nSending Service details to Deployment Manager\n",service_data)
+	print("\nSending Service details to Deployment Manager\n")
 
 	send_service_to_deployment(service_data)
 
@@ -31,16 +31,16 @@ def get_scheduler_msg():
 
 def handle_scheduler_msg(msg):
 	
-	print("recivie schedule msg",msg)
+	print("recivie schedule msg ",msg['algoid'])
 	send_request_serverLC(msg)
 
 	# recieved_server_details(msg)
 
 
 def handle_serverLC_msg(msg):
-	print("Server LC respond",msg)
+	print("Server LC respond",msg['algoid'])
 	service_data=bind_algo(msg)
-	print("Algo binded", service_data)
+	print("Algo binded")
 	send_service_to_deployment(service_data)
 
 

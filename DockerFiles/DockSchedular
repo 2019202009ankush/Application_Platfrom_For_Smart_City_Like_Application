@@ -9,4 +9,4 @@ RUN pip3 install bson
 RUN pip3 install pymongo
 ADD . /
 WORKDIR /
-CMD ["python3 /Server_Lifecycle/server_lifecycle.py"]
+CMD ["sh","-c","python3 -u /platform/Scheduler/sched.py"]

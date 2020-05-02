@@ -1,11 +1,11 @@
 import json
-
+import os
 import random
 import time
 import producer_json
 def sensor_run(i,typ,loc,ip,port):
-	
-	with open('meta.json') as f:
+	curpath=str(os.path.dirname(os.path.realpath(__file__)))
+	with open(curpath+'/meta.json') as f:
 		meta = json.load(f)
 	# print(meta[typ])
 	rang=meta[typ]['range']
@@ -62,7 +62,7 @@ def sensor_run(i,typ,loc,ip,port):
 				data+=str(random.randrange(80,100))
 	
 	if typ == 'temperature':
-		f=open('../../Applications/pande/SmartClass/Emergency Fire Alarm Service/temperature.txt','a+')
+		f=open('/Applications/pande/SmartClass/Emergency Fire Alarm Service/temperature.txt','a+')
 		f.write(str(data))
 		f.write("\n")
 		f.close()

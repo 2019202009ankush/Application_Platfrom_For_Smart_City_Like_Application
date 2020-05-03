@@ -11,23 +11,15 @@ from time import sleep
 algorihtm_details={}
 
 
-def get_algo_details():
+def get_algo_details(msg):
 	global algorihtm_details
 	curpath=str(os.path.dirname(os.path.realpath(__file__)))
-	curpath=str(os.path.dirname(os.path.realpath(__file__)))
-	# print("curpath",curpath)
-	ppath=dirname(curpath)
-	# print("ppath",ppath)
-	ppp_path=dirname(ppath)
-	# print("ppp_ath",ppp_path)
-	
-	f= open(ppp_path+'/Applications/pande/SmartClass/algorithm_metadata.json',) 
+	f= open('Applications/'+msg['DevName']+'/'+msg['AppName']+'/algorithm_metadata.json',) 
 	algorihtm_details = json.load(f) 
 
 
 def bind_algo(msg):
-
-	get_algo_details()
+	get_algo_details(msg)
 	print("\nBinding to algo",algorihtm_details[msg["algoid"]])
 	msg["algoid"]=algorihtm_details[msg["algoid"]]
 	return msg

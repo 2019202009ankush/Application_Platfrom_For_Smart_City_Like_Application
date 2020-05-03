@@ -107,11 +107,11 @@ def main():
 
 
                 if (meta_data["days"]=="everyday" and meta_data["request_type"]!="immediate" ):
-                    regular(meta_data["days"],meta_data["start_time"],meta_data["duration"],meta_data["algo"])
+                    regular(meta_data["days"],meta_data["start_time"],meta_data["duration"],meta_data["algoid"])
                    
 
                 elif (meta_data["days"]!="everyday" and meta_data["days"]!=""):
-                    notregular(meta_data["days"],meta_data["start_time"],meta_data["duration"],meta_data["algo"])
+                    notregular(meta_data["days"],meta_data["start_time"],meta_data["duration"],meta_data["algoid"])
 
                 elif(meta_data["request_type"]=="immediate"):
                     print("Scheduling immediately")
@@ -121,13 +121,13 @@ def main():
 
                 elif(meta_data["request_type"]=="periodic"):
                     print("in periodic scheduling")
-                    period(meta_data["duration"],meta_data["start_time"],meta_data["algo"])
+                    period(meta_data["duration"],meta_data["start_time"],meta_data["algoid"])
 
                 start_new_thread(pending,())
 
 
             else:
-                schedule.cancel_job(eval(meta_data["algo"]))
+                schedule.cancel_job(eval(meta_data["algoid"]))
 
 
 

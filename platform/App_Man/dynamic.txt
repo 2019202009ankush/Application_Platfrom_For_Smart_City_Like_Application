@@ -1,1 +1,1 @@
-{'UserId': 'shanu.gandhi@students.iiit.ac.in', 'AppName': 'SmartClass', 'algoid': 'FAS', 'form': 'run', 'start_time': '12:00', 'location': 'obh_112', 'duration': '55', 'request_type': 'immediate', 'priority': 'medium', 'days': 'everyday', 'additional_detail': ''}
+{'UserId': 'ef', 'AppName': 'SmartClass', 'algoid': 'TD', 'form': 'run', 'start_time': '1:00', 'location': 'obh_112', 'duration': '89', 'request_type': 'immediate', 'priority': 'high', 'days': 'everyday', 'DevName': 'shubham'}

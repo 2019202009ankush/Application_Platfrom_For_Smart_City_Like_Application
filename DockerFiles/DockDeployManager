@@ -7,6 +7,5 @@ RUN pip3 install psutil
 RUN pip3 install schedule
 RUN pip3 install bson
 RUN pip3 install pymongo
-ADD . /
-WORKDIR /
-CMD ["sh","-c","python3 -u /platform/Deployment_Manager/DeploymentManager.py"]
+WORKDIR /opt
+CMD ["sh","-c","python3 -u /opt/platform/Deployment_Manager/DeploymentManager.py"]

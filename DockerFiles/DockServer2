@@ -9,6 +9,5 @@ RUN pip3 install flask
 RUN pip3 install matplotlib
 RUN pip3 install bson
 RUN pip3 install pymongo
-ADD . /
-WORKDIR /
-CMD ["sh","-c","python3 -u /platform/Server_Lifecycle/server.py s2"]
+WORKDIR /opt
+CMD ["sh","-c","python3 -u /opt/platform/Server_Lifecycle/server.py s2"]

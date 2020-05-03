@@ -1,7 +1,8 @@
 from flask import Flask, redirect, url_for ,render_template,request
 import os
 import sys
-app = Flask(__name__)
+curpath=str(os.path.dirname(os.path.realpath(__file__)))
+app = Flask(__name__, template_folder=curpath+'/templates')
 
 @app.route("/sign-up",methods=["GET","POST"])
 def sign_up():
@@ -9,7 +10,7 @@ def sign_up():
 		req=request.form
 		req=dict(req)
 		orig_stdout = sys.stdout
-		f = open("dynamic.txt", 'w')
+		f = open(curpath+"/dynamic.txt", 'w')
 		sys.stdout = f
 		print(req)
 		sys.stdout = orig_stdout

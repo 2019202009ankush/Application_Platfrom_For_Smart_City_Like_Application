@@ -1,0 +1,12 @@
+acad_office_contact-acad@gmail.com
+class_no:faulty_name:faculty_email:subject:timing:capacity:sensor_id
+101:fname1:abc1@gmail.com:sub1:8-00/10-00:150:d1
+102:fname2:abc2@gmail.com:sub2:10-00/12-00:150:d2
+103:fname3:abc3@gmail.com:sub3:8-00/10-00:180:d3
+104:fname4:abc4@gmail.com:sub4:10-00/12-00:150:d4
+105:fname5:abc5@gmail.com:sub5:14-00/16-00:160:d5
+106:fname6:abc6@gmail.com:sub6:16-00/18-00:200:d6
+107:fname7:abc7@gmail.com:sub7:16-00/18-00:120:d7
+108:fname8:abc8@gmail.com:sub8:14-00/16-00:140:d8
+109:fname9:abc9@gmail.com:sub9:8-00/10-00:90:d9
+110:fname10:abc10@gmail.com:sub10:10-00/12-00:90:d10

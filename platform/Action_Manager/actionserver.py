@@ -62,9 +62,9 @@ def action_handler(message):
                 if(name[0]==action_tag[i]):
                     # print("2 !!@@",name[0],":",action_tag[i])
     #                print(name[1])
-                    call_file=name[1]+" "+str(userid)+" "+"'"+str(output)+"' &"
+                    call_file="'"+curpath+"/"+name[1]+"'"+" "+str(userid)+" "+"'"+str(output)+"' &"
                     print("\n\ncall",call_file)
-                    os.system(call_file)
+                    os.system("python3 "+call_file)
     #                email_method()
                     # break
 #     action_list = dict_msg['Action']

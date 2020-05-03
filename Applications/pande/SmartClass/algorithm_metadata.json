@@ -30,6 +30,29 @@
 		"sensors":["temperature"],
 		"ServiceName":"Emergency Fire Alarm Service",
 		"dependency":"pip3 install python3"
-		}	
+		},
+
+	"PC":{
+		"path": "/Applications/pande/SmartClass/Power Control/power_control.py",
+		"input": "NaN",
+		"sensors":["heartbeat"],
+		"ServiceName":"Power Control Service",
+		"dependency":"pip3 install python3"
+	},
+
+	"WL": {
+		"path": "/Applications/pande/SmartClass/Water Level/waterlevel.py",
+		"input": "NaN",
+		"sensors":["waterlevel"],
+		"ServiceName":"Water Level Detection",
+		"dependency":"pip3 install python3"
+		},
+	"GAS": {
+		"path": "/Applications/pande/SmartClass/GAS/gas.py",
+		"input": "NaN",
+		"sensors":["gas"],
+		"ServiceName":"Toxic Content Detection",
+		"dependency":"pip3 install python3"
+		}
   
 }

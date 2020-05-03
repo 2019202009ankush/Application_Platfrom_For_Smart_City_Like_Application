@@ -1,2 +1,2 @@
-email ./myemail.py
-notification ./sendsms.py
+email myemail.py
+notification sendsms.py

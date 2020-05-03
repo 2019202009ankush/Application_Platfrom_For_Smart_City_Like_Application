@@ -4,7 +4,7 @@
 	{
 		"UserId":"harshit@gamil.com",
 		"AppName":"SmartClass",
-		"algoid":"FAS",
+		"algoid":"GAS",
 		"priority":"medium",
 		"request_type":"immediate",
 		"days":"",
@@ -13,7 +13,8 @@
 		"form":"run",
 		"action":"",
 		"notification":"",
-		"location":"obh_112"
+		"location":"obh_112",
+		"DevName":"pande"
 	} 
 ]
 }

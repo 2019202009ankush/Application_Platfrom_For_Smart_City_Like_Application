@@ -1,3 +1,4 @@
+from os.path import dirname, realpath
 from time import sleep
 import json
 import subprocess
@@ -21,6 +22,14 @@ service_status={}
 import os
 
 def handle_service(msg):
+	# print("msg",msg)
+	curpath=str(os.path.dirname(os.path.realpath(__file__)))
+	# print("curpath",curpath)
+	ppath=dirname(curpath)
+	# print("ppath",ppath)
+	ppp_path=dirname(ppath)	
+	msg='"'+ppp_path+msg[1:]
+	print("msg",msg)
 	os.system("python3 "+msg)
 
 

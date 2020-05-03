@@ -34,7 +34,8 @@ def handle_runtime():
 
 def get_all_server_details():
 	global server_details
-	f = open('/platform/Server_Lifecycle/server_details.json',) 
+	curpath=str(os.path.dirname(os.path.realpath(__file__)))
+	f = open(curpath+'/server_details.json',) 
 	data = json.load(f) 
 	#print(data)
 	server_details=data
@@ -53,7 +54,8 @@ def start_server():
 		return
 
 	server_details[i]['active']=1
-	cwd = os.getcwd()
+	cwd=str(os.path.dirname(os.path.realpath(__file__)))
+	# cwd = os.getcwd()
 	logmsg={}
 	logmsg['component']='Server_lifecycle'
 	logmsg['msg']=str(_server)+" has been started"

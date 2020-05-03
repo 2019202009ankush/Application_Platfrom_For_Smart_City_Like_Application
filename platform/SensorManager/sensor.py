@@ -1,3 +1,4 @@
+from os.path import dirname, realpath
 import json
 import os
 import random
@@ -62,7 +63,12 @@ def sensor_run(i,typ,loc,ip,port):
 				data+=str(random.randrange(80,100))
 	
 	if typ == 'temperature':
-		f=open('/Applications/pande/SmartClass/Emergency Fire Alarm Service/temperature.txt','a+')
+		curpath=str(os.path.dirname(os.path.realpath(__file__)))
+		# print("curpath",curpath)
+		ppath=dirname(curpath)
+		# print("ppath",ppath)
+		ppp_path=dirname(ppath)
+		f=open(ppp_path+'/Applications/pande/SmartClass/Emergency Fire Alarm Service/temperature.txt','a+')
 		f.write(str(data))
 		f.write("\n")
 		f.close()

@@ -1,3 +1,4 @@
+from os.path import dirname, realpath
 from kafka import KafkaConsumer
 import psutil
 import os
@@ -13,7 +14,14 @@ algorihtm_details={}
 def get_algo_details():
 	global algorihtm_details
 	curpath=str(os.path.dirname(os.path.realpath(__file__)))
-	f= open('/Applications/pande/SmartClass/algorithm_metadata.json',) 
+	curpath=str(os.path.dirname(os.path.realpath(__file__)))
+	# print("curpath",curpath)
+	ppath=dirname(curpath)
+	# print("ppath",ppath)
+	ppp_path=dirname(ppath)
+	# print("ppp_ath",ppp_path)
+	
+	f= open(ppp_path+'/Applications/pande/SmartClass/algorithm_metadata.json',) 
 	algorihtm_details = json.load(f) 
 
 

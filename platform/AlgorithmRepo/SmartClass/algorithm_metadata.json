@@ -47,8 +47,8 @@
 		"ServiceName":"Water Level Detection",
 		"dependency":"pip3 install python3"
 		},
-	"GAS": {
-		"path": "AlgorithmRepo/SmartClass/GAS/gas.py",
+	"TD": {
+		"path": "AlgorithmRepo/SmartClass/Toxicity Detection/toxicity_detection.py",
 		"input": "NaN",
 		"sensors":["gas"],
 		"ServiceName":"Toxic Content Detection",

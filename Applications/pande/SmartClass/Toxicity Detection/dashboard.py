@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 lines=""
 
-@app.route("/gas")
+@app.route("/td")
 def index():
     global lines
     curpath=str(os.path.dirname(os.path.realpath(__file__)))

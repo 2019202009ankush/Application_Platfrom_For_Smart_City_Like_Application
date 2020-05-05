@@ -13,13 +13,20 @@ import datetime
 
 import time
 import collections 
+import os
 # topic_own="pandey"
 
 sys.path.insert(0, "platform/communication_module")
 
+curpath=str(os.path.dirname(os.path.realpath(__file__)))
+
+os.system("python3 "+curpath+"/dashboard/dashboard.py &")
+
+file=open(curpath+"/dashboard/running.txt","w")
+file.close()
 import communication_module as cm
 
-
+# file=open("running.txt","a+")
 
 current_process=None
 print("---------- Schedular Started -------------")
@@ -31,10 +38,15 @@ meta_data=None
 
 #funstion to send data to service life cycle module when its turn comes.
 def to_servicelifecycle():
-	global meta_data
-	global dq
-	
-	cm.Schedular_to_ServiceLifeCycle_Producer_interface(meta_data)
+
+
+    global meta_data
+    global dq
+    curpath=str(os.path.dirname(os.path.realpath(__file__)))
+    file=open(curpath+"/dashboard/running.txt","a")
+    file.write(str(meta_data["algoid"])+" at location "+meta_data["location"]+" is running "+ "from "+meta_data["start_time"])
+    file.close()
+    cm.Schedular_to_ServiceLifeCycle_Producer_interface(meta_data)
 
 global x,y,z,a
 
@@ -67,6 +79,8 @@ def period(duration,start,algo):
 #If priority is high push the data in front of the queue
 def inputq(msg):
     global dq
+    
+
 
     if(msg["priority"]=="high"):
         # print("hey ya")
@@ -97,37 +111,54 @@ def main():
         #print("Hello")
         global dq
         global meta_data
+    
+
         while(len(dq)>0):
+
             print("Hello 1")
             global i
             i=i+1
-            meta_data=dq.popleft()
 
+
+            meta_data=dq.popleft()
+            # file=open("running.txt","a+")
+            # file.write(str(meta_data["algoid"])+" at location "+meta_data["location"]+" is running "+ "from "+meta_data["start_time"])
+
+            
             if(meta_data["form"]=="run"):
 
 
                 if (meta_data["days"]=="everyday" and meta_data["request_type"]!="immediate" ):
-                    regular(meta_data["days"],meta_data["start_time"],meta_data["duration"],meta_data["algoid"])
+                    regular(meta_data["days"],meta_data["start_time"],meta_data["duration"],meta_data["algo"])
                    
 
                 elif (meta_data["days"]!="everyday" and meta_data["days"]!=""):
-                    notregular(meta_data["days"],meta_data["start_time"],meta_data["duration"],meta_data["algoid"])
+                    notregular(meta_data["days"],meta_data["start_time"],meta_data["duration"],meta_data["algo"])
 
                 elif(meta_data["request_type"]=="immediate"):
+                    # print("heyyyyyyyyyyyyyy")
+                    # global file
                     print("Scheduling immediately")
+                    curpath=str(os.path.dirname(os.path.realpath(__file__)))
+                    file=open(curpath+"/dashboard/running.txt","a")
+                    # file=open("running.txt","a")
+                    
+                    file.write(str(meta_data["algoid"])+" at location "+meta_data["location"]+" is scheduled immediately\n")
+                    file.close()
+
                     cm.Schedular_to_ServiceLifeCycle_Producer_interface(meta_data)
                     # immediate(meta_data["duration"],meta_data["algo"])
 
 
                 elif(meta_data["request_type"]=="periodic"):
                     print("in periodic scheduling")
-                    period(meta_data["duration"],meta_data["start_time"],meta_data["algoid"])
+                    period(meta_data["duration"],meta_data["start_time"],meta_data["algo"])
 
                 start_new_thread(pending,())
 
 
             else:
-                schedule.cancel_job(eval(meta_data["algoid"]))
+                schedule.cancel_job(eval(meta_data["algo"]))
 
 
 

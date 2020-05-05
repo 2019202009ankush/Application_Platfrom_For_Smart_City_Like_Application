@@ -29,6 +29,20 @@
 1. docker run --rm --network=host new
 2. sudo docker kill $(sudo docker ps -q)
 
+----------------------------------------------------------------------------------------------------------------------------
+### Drop all databases
+
+var dbs = db.getMongo().getDBNames()
+for(var i in dbs){
+    db = db.getMongo().getDB( dbs[i] );
+    print( "dropping db " + db.getName() );
+    db.dropDatabase();
+}
+
+save it to dropall.js and then execute:
+
+mongo dropall.js
+
 --------------------------------------------------------------------------------------------------------------------------
 #### IP and Port to see the dashboard of various service
 1. All kafka topic data visualization https://localhost:3030

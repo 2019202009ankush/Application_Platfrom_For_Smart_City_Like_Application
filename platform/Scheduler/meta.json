@@ -4,7 +4,7 @@
 	{
 		"UserId":"harshit@gamil.com",
 		"AppName":"SmartClass",
-		"algoid":"TD",
+		"algoid":"IAD",
 		"priority":"medium",
 		"request_type":"immediate",
 		"days":"",
@@ -13,8 +13,7 @@
 		"form":"run",
 		"action":"",
 		"notification":"",
-		"location":"obh_112",
-		"DevName":"pande"
+		"location":"obh_112"
 	} 
 ]
 }

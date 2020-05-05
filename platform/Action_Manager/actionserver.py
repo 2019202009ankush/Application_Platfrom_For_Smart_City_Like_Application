@@ -29,12 +29,11 @@ user_no=0
 
 def action_handler(message):
     global user_no
-    print("In action_handler  :  ",user_no)
-    
+    #print("In action_handler  :  ",user_no)
     dict_msg = message
     #print(user_no)
     if(dict_msg['ActionType']=='Control'):
-        print("Hardware Action to be taken !!!!!!!!",dict_msg['Output'])
+        print("Action : ",dict_msg['Output'])
     
     elif(dict_msg['ActionType']=='Notification'):
         action_list = dict_msg['Action']

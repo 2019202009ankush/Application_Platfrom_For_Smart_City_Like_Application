@@ -28,7 +28,8 @@ def generate_dockerfile(msg):
 
 def send_to_server(data):
 	cmd=""
-	cmd=cmd+'"'+str(data['algoid']['path'])+'"'+" "
+	#cmd=cmd+'"'+str(data['algoid']['path'])+'"'+" "
+	cmd=cmd+'"'+'/Applications/'+str(data['DevName'])+'/'+str(data['algoid']['path'])+'"'+" "
 	cmd=cmd+" "+str(data['UserId'])+" "+'"'+str(data['AppName'])+'"'+" "+'"'+str(data['algoid']['ServiceName'])+'"'+" "+'"'+str(data['location'])+'"'+" "
 	cmd=cmd+str(len(data['topics']))+" "
 	for i in range(len(data['topics'])):
@@ -38,7 +39,7 @@ def send_to_server(data):
 	data['service_id']=str(data['server_id'])
 	data['code']=str(cmd)
 	cm.DeployManager_to_RuntimeServer_Producer_interface(data)
-	#print("\nSending to Run Time server :-\n",cmd)
+	print("\nSending to Run Time server :-\n",cmd)
 
 
 def request_sensor(data):

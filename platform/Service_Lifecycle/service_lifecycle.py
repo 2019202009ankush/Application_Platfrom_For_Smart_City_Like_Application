@@ -43,9 +43,12 @@ def handle_scheduler_msg(msg):
 
 def handle_serverLC_msg(msg):
 	# print("Server LC respond",msg['algoid'])
-	# service_data=bind_algo(msg)
-	# print("Algo binded")
-	send_service_to_deployment(msg)
+	if(msg['server_id']==None):
+		print("Can't Schedule it")
+	else:
+		#service_data=bind_algo(msg)
+		# print("Algo binded")
+		send_service_to_deployment(msg)
 
 
 def send_service_to_deployment(msg):

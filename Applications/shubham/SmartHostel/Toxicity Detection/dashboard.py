@@ -28,7 +28,7 @@ def index():
     
     # in a real app you probably want to use a flask template.
     return f"""
-    <h1>Dashboard</h1>
+    <h1>Toxic Detection</h1>
     
     
     <h3>Current Status is as follows</h3>

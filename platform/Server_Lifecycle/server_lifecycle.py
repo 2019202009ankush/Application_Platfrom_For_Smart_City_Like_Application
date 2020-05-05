@@ -17,6 +17,8 @@ import producer_json
 
 server_details={}
 
+flag=0
+
 def handle_service(msg):
 	#print("#######",msg['service_id'],"for Logging")
 	service_id=msg['service_id']
@@ -105,6 +107,7 @@ def handle_service_LC_msg(msg):
 	send_server_details_msg(msg)
 
 def send_server_details_msg(msg):
+	global flag
 	t=r.randint(1,2)
 	#s=load_balancer()
 	sv="s"+str(t)
@@ -112,7 +115,14 @@ def send_server_details_msg(msg):
 	msg['ip']="127.0.0.1"
 	msg['port']="8090"
 
-	print("Recevied and scheduled (Server id)\n",sv)
+	if(msg['priority']=="high"):
+		if(flag==0):
+			msg['server_id']='s3'
+			flag=1
+		else:
+			msg['server_id']=None
+
+	print("Recevied and scheduled (Server id)\n",msg['server_id'])
 	logmsg={}
 	logmsg['component']='Server_lifecycle'
 	logmsg['msg']=msg

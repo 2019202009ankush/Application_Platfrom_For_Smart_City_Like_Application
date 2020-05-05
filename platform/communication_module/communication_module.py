@@ -256,10 +256,10 @@ def RuntimeServer_to_ActionServer_interface(func_name):
 	for message in consumer:
             mess= (message.value)
             num+=1
-            print("msg!!!!!",mess)
+            #print("msg!!!!!",mess)
             # action_handler(mess)
             print("Action # "+str(num))
-            print("call threading")
+            #print("call threading")
             th = threading.Thread(target=func_name,kwargs={'message':mess})
             th.start()
             # break

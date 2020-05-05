@@ -21,6 +21,10 @@ from json import loads
 from json import dumps
 from kafka import KafkaProducer
 
+curpath=str(os.path.dirname(os.path.realpath(__file__)))
+path=curpath+"/dropall.js"
+os.system("python3 "+path)
+
 
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 mydb = myclient["hackdb"]

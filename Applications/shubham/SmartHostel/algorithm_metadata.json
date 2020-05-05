@@ -1,6 +1,6 @@
 {
 	"FAS": {
-		"path": "/Applications/shubham/SmartHostel/Emergency Fire Alarm Service/fire_alarm.py",
+		"path": "SmartHostel/Emergency Fire Alarm Service/fire_alarm.py",
 		"input": "NaN",
 		"sensors":["temperature"],
 		"ServiceName":"Emergency Fire Alarm Service",
@@ -8,7 +8,7 @@
 		},
 
 	"PC":{
-		"path": "/Applications/shubham/SmartHostel/Power Control/power_control.py",
+		"path": "SmartHostel/Power Control/power_control.py",
 		"input": "NaN",
 		"sensors":["heartbeat"],
 		"ServiceName":"Power Control Service",
@@ -16,14 +16,14 @@
 	},
 
 	"WL": {
-		"path": "/Applications/shubham/SmartHostel/Water Level/waterlevel.py",
+		"path": "SmartHostel/Water Level/waterlevel.py",
 		"input": "NaN",
 		"sensors":["waterlevel"],
 		"ServiceName":"Water Level Detection",
 		"dependency":"pip3 install python3"
 		},
 	"TD": {
-		"path": "/Applications/shubham/SmartHostel/Toxicity Detection/toxicity_detection.py",
+		"path": "SmartHostel/Toxicity Detection/toxicity_detection.py",
 		"input": "NaN",
 		"sensors":["gas"],
 		"ServiceName":"Toxic Content Detection",

@@ -1,1 +1,1 @@
-{'UserId': 'ef', 'AppName': 'SmartClass', 'algoid': 'TD', 'form': 'run', 'start_time': '1:00', 'location': 'obh_112', 'duration': '89', 'request_type': 'immediate', 'priority': 'high', 'days': 'everyday', 'DevName': 'shubham'}
+{'UserId': 'lo', 'AppName': 'SmartHostel', 'algoid': 'WL', 'form': 'run', 'start_time': '10:00', 'location': 'obh_112', 'duration': '90', 'request_type': 'immediate', 'priority': 'high', 'days': 'everyday', 'DevName': 'shubham'}

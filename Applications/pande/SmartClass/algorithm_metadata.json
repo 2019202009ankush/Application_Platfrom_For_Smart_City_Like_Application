@@ -1,6 +1,6 @@
 {
 	"IAD": {
-		"path": "/Applications/pande/SmartClass/Illegal Access Detection/illegal_access_detect.py",
+		"path": "/Applications/shubham/SmartClass/Illegal Access Detection/illegal_access_detect.py",
 		"input": "NaN",
 		"sensors":["doorstep"],
 		"ServiceName":"Illegal Access Detection",
@@ -8,7 +8,7 @@
 		},
 
 	"classSchedule": {
-		"path": "/Applications/pande/SmartClass/Scheduling Classes/scheduling_algo.py",
+		"path": "/Applications/shubham/SmartClass/Scheduling Classes/scheduling_algo.py",
 		"input": "NaN",
 		"sensors":["numeric_attandance","numeric_attandance","numeric_attandance","numeric_attandance","numeric_attandance",
 			"numeric_attandance","numeric_attandance","numeric_attandance","numeric_attandance","numeric_attandance"],
@@ -17,7 +17,7 @@
 	},
 
 	"SAC": {
-		"path": "/Applications/pande/SmartClass/Smart AC/ac_temp.py",
+		"path": "/Applications/shubham/SmartClass/Smart AC/ac_temp.py",
 		"input": "NaN",
 		"sensors":["temperature"],
 		"ServiceName":"Automated AC Service",
@@ -25,7 +25,7 @@
 		},
 
 	"FAS": {
-		"path": "/Applications/pande/SmartClass/Emergency Fire Alarm Service/fire_alarm.py",
+		"path": "/Applications/shubham/SmartClass/Emergency Fire Alarm Service/fire_alarm.py",
 		"input": "NaN",
 		"sensors":["temperature"],
 		"ServiceName":"Emergency Fire Alarm Service",
@@ -33,7 +33,7 @@
 		},
 
 	"PC":{
-		"path": "/Applications/pande/SmartClass/Power Control/power_control.py",
+		"path": "/Applications/shubham/SmartClass/Power Control/power_control.py",
 		"input": "NaN",
 		"sensors":["heartbeat"],
 		"ServiceName":"Power Control Service",
@@ -41,14 +41,14 @@
 	},
 
 	"WL": {
-		"path": "/Applications/pande/SmartClass/Water Level/waterlevel.py",
+		"path": "/Applications/shubham/SmartClass/Water Level/waterlevel.py",
 		"input": "NaN",
 		"sensors":["waterlevel"],
 		"ServiceName":"Water Level Detection",
 		"dependency":"pip3 install python3"
 		},
 	"TD": {
-		"path": "/Applications/pande/SmartClass/Toxicity Detection/toxicity_detection.py",
+		"path": "/Applications/shubham/SmartClass/Toxicity Detection/toxicity_detection.py",
 		"input": "NaN",
 		"sensors":["gas"],
 		"ServiceName":"Toxic Content Detection",

@@ -10,6 +10,7 @@ import os
 def run(loc,topic,id):
 	curpath=str(os.path.dirname(os.path.realpath(__file__)))
 	cmd="python3 '"+curpath+"/dashboard.py' &"
+	os.system(cmd)
 	lis=[]
 	mess={}
 	mess['UserId']=sys.argv[1]
@@ -24,7 +25,7 @@ def run(loc,topic,id):
 			count+=1
 			# print(len(lis),val)
 			if(count>=5):
-				os.system(cmd)
+				
 				mess["ActionType"]="Control"
 				mess["Output"]=str('ON_FIRE_ALRAM_'+loc)
 				#print("Sending",mess)

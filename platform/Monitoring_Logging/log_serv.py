@@ -41,18 +41,34 @@ commonLog = KafkaConsumer(
 
 
 def eventReceiveLogData(m1):
-    # print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!receieved log data:::",m1)
+    #print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!receieved log data:::",m1)
     message = m1
-    if (isinstance(message, dict) ):
-    	res=message
-    else:
-    	res = ast.literal_eval(message) 
-    # print("Message receieved:",(res),type(res))
+    res=m1
+   
+    # if (isinstance(message, dict) ):
+    # 	res=message
+    # else:
+    # 	res = ast.literal_eval(message) 
+   
+    # print("Message receieved in log:",(res),type(res))
     # print("table to store:",res['component'])
-    # mycol = mydb["logtable"]
-    mycol = mydb[res['component']]
+    
+
+    # if res["component"]=="server":
+    mydb = myclient["server_db"]
+
+    for i in m1:
+        cur_collection="log_"+i['server_id']
+        #print("cur_collection",cur_collection)
+        #print("res insert in db@@@@@@@@@@", i,cur_collection)
+        mycol = mydb[cur_collection]
+        mycol.insert_one(i)
+
+  
+
+    # mycol = mydb[res['component']]
 	# mydict = { "name": "John", "address": "Highway 37" }
-    x = mycol.insert_one(res)
+    # x = mycol.insert_one(res)
     # print("stored in table\n\n")
 
 
@@ -77,12 +93,44 @@ def threaded():
 		    x = mycol.insert_one(res)'''
 
 
+# def handle_restart_service(msg):
+#     print("restart server!!!!!!!!!!!!")
+#     print(msg)
+    # t=r.randint(1,2)
+    #s=load_balancer()
+    # if msg["server_id"]=="s1":
+    #     sv="s2"
+    # else:
+    #     sv="s1"
+
+    # # sv="s"+str(t)
+    # msg['server_id']=sv
+    # msg['ip']="127.0.0.1"
+    # msg['port']="8090"
+
+    # print("Service to schedule-------->\n",sv)
+    # logmsg={}
+    # logmsg['component']='Server_lifecycle'
+    # logmsg['msg']=msg
+    # # cm.common_Logger_Producer_interface(logmsg)
+    # cm.ServerLifeCycle_to_ServiceLifeCycle_Producer_interface(msg)
+    # print("\nmsg sended")
+
+
+# def restart_service():
+#     while(1):
+#         communication_module.ApplicationManager_to_ServiceLifeCycle_interface2(handle_restart_service)
+#         print("end while!!!!")
 
 
 start_new_thread(threaded,()) 
 
-def createTopics():
-	os.system("/usr/local/kafka/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic commonLog")
+# t3 = threading.Thread(target=restart_service, args=()) 
+# t3.start() 
+
+
+
+
 
 
 # createTopics()

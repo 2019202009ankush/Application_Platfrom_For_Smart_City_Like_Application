@@ -43,12 +43,12 @@ def dev_se_data(fd):
 		dy=dy1[0]
 		tr=dy
 		tr=eval(tr)
-		print(tr)
+		#print(tr)
 		cm.ApplicationManager_to_Scheduler_Producer_interface(tr)
 		# os.remove("./dynamic.txt")
 
 def handler(func, path, exc_info): 
-	print("Inside handler") 
+	#print("Inside handler") 
 	print(exc_info) 
 
 def main():
@@ -81,7 +81,7 @@ def main():
 				zipObj.extractall(lc)
 			path = os.path.join(curpath, "uploads") 
 			shutil.rmtree(path, onerror = handler)
-			print("Extracted")
+			print("Done")
 
 
 if __name__ == '__main__': 

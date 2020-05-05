@@ -9,13 +9,13 @@ import sys
 sys.path.insert(0, "platform/communication_module")
 
 import communication_module as cm
-print('Now in service life cycle')
+print('---------- Now in service life cycle -------------')
 
 def get_scheduler_msg():
 
 	f = open('/platform/Service_Lifecycle/scheduler_msg.json',) 
 	data = json.load(f)
-	print("Service to schedule",data)
+	#print("Service to schedule",data)
 	send_request_serverLC(data)
 	service_data=bind_algo(data)
 
@@ -23,25 +23,29 @@ def get_scheduler_msg():
 	print("\nRecieved Server details:- ",server)
 	service_data['server']=server[service_data['reqid']]
 
-	print("\nSending Service details to Deployment Manager\n")
+	#print("\nSending Service details to Deployment Manager\n")
 
 	send_service_to_deployment(service_data)
 
 	return data
 
 def handle_scheduler_msg(msg):
+	#print("Server LC respond",msg['algoid'])
+	service_data=bind_algo(msg)
+	#print("Algo binded")
+
+	print("receive schedule msg ",msg['algoid'])
 	
-	print("recivie schedule msg ",msg['algoid'])
-	send_request_serverLC(msg)
+	send_request_serverLC(service_data)
 
 	# recieved_server_details(msg)
 
 
 def handle_serverLC_msg(msg):
-	print("Server LC respond",msg['algoid'])
-	service_data=bind_algo(msg)
-	print("Algo binded")
-	send_service_to_deployment(service_data)
+	# print("Server LC respond",msg['algoid'])
+	# service_data=bind_algo(msg)
+	# print("Algo binded")
+	send_service_to_deployment(msg)
 
 
 def send_service_to_deployment(msg):
@@ -53,12 +57,13 @@ def send_request_serverLC(msg):
 
 
 def recieved_server_details(msg):
-	print("\nrecived msg from service \n")
+	#print("\nrecived msg from service \n")
 	msg["server_id"]="s1"
 	msg["ip"]='127.0.0.1'
 	msg["port"]=8090
 	cm.ServerLifeCycle_to_ServiceLifeCycle_Producer_interface(msg)
 	
+
 th=threading.Thread(target=cm.ServerLifeCycle_to_ServiceLifeCycle_interface,kwargs={'func_name':handle_serverLC_msg})
 th.start()
 

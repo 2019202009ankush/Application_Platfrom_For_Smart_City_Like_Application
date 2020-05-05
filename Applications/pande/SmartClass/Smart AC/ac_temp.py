@@ -1,5 +1,6 @@
 import sys
-sys.path.insert(0,"../communication_module")
+import os
+sys.path.insert(0,"platform/communication_module")
 
 import communication_module
 import statistics
@@ -31,7 +32,7 @@ def run(loc,topic,id):
 			mess["Output"]=str('HIGH_TEMP :'+str(val['data']))
 
 
-		display=mess["Action"]
+		display=mess["Output"]
 		curpath=str(os.path.dirname(os.path.realpath(__file__)))
 		file=open(curpath+"/display.txt","w+")
 		file.write(display)

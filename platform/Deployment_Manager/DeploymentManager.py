@@ -11,7 +11,7 @@ import communication_module as cm
 
 def handle_servicelc_msg(msg):
 
-	print("Service Recieved to deploy:-\n")
+	# print("Service Recieved to deploy:-\n")
 
 	request_sensor(msg)
 
@@ -34,22 +34,22 @@ def send_to_server(data):
 	for i in range(len(data['topics'])):
 		cmd=cmd+str(data['topics'][i])+" "+str(data['ids'][i])+" "
 
-	mess={}
-	mess['service_id']=str(data['server_id'])
-	mess['code']=str(cmd)
-	cm.DeployManager_to_RuntimeServer_Producer_interface(mess)
-	print("\nSending to Run Time server :-\n",cmd)
+	# mess={}
+	data['service_id']=str(data['server_id'])
+	data['code']=str(cmd)
+	cm.DeployManager_to_RuntimeServer_Producer_interface(data)
+	#print("\nSending to Run Time server :-\n",cmd)
 
 
 def request_sensor(data):
 
-	print("\nSending to Sensor mgr :-\n")
+	# print("\nSending to Sensor mgr :-\n")
 	cm.DeployManager_to_SensorManager_Producer_interface(data)
 		
 
 
 def handle_sensor_mgr_msg(msg):
-	print("Recived Sensor details")
+	# print("Recived Sensor details")
 	# generate_dockerfile(msg)
 	send_to_server(msg)
 

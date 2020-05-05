@@ -50,67 +50,119 @@ div {
 
   <form action="/sign-up" method="POST">
     
-   
+    <table>
+      <tr>
+        <td>
+          <label for="fname">USER ID</label>
+        </td>
+        <td>
+          <input type="text" id="fname" name="UserId" placeholder="Enter user id here">
+        </td>
+      </tr>
+      <tr>
+        <td>
+              <label for="fname">Application Name</label>
+        </td>
+        <td>
+           <input type="text" id="fname" name="AppName" placeholder="Enter application name here">
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <label for="fname">Algo ID</label>
+        </td>
+        <td>
+          <input type="text" id="fname" name="algoid" placeholder="Enter algo id here">
+        </td> 
+      </tr>
+     <!-- <tr>
+        <td>
+           What to do?    
+        </td>
+          <select name = "form" >
+              <option value = "run" selected>RUN</option>
+              <option value = "cancel">KILL</option>
+          </select>
+      </tr> -->
+      <tr>
+        <td>
+          <label for="lname">Start Time</label>
+        </td>
+        <td>
+          <input type="text" id="lname" name="start_time" placeholder="Enter start time here">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="lname">Location</label>
+        </td>
+        <td>
+          <input type="text" id="lname" name="location" placeholder="Enter location here">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="lname">Duration</label>
+        </td>
+        <td>
+          <input type="text" id="lname" name="duration" placeholder="Enter duration here">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Request Type
+        </td>
+        <td>
+          <select name = "request_type">
+              <option value = "immediate" selected>IMMEDIATE</option>
+              <option value = "periodic">PERIODIC</option>
+          </select>
+        </td>
+      </tr>
 
-    <label for="fname">USER ID</label>
-    <input type="text" id="fname" name="UserId" placeholder="Enter user id here">
+      <tr>
+        <td>
+          Priority
+        </td>
+        <td>
+           <select name = "priority">
+              <option value = "low">  LOW</option>
+              <option value = "medium">MEDIUM</option>
+              <option value = "high" selected>HIGH</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <label for="days">Days</label>
+        </td>
+        <td>
+          <select id="days" name="days" >
+            <option value="everyday">Everyday</option>
+            <option value="monday">Monday</option>
 
-    <label for="fname">Application Name</label>
-    <input type="text" id="fname" name="AppName" placeholder="Enter application name here">
-
-    <label for="fname">Algo ID</label>
-    <input type="text" id="fname" name="algoid" placeholder="Enter algo id here">
-
-    What to do?
-     <select name = "form" >
-        <option value = "run" selected>RUN</option>
-        <option value = "cancel">KILL</option>
-    </select>
-
-    <label for="lname">Start Time</label>
-    <input type="text" id="lname" name="start_time" placeholder="Enter start time here">
-
-
-    <label for="lname">Location</label>
-    <input type="text" id="lname" name="location" placeholder="Enter location here">
-
-    <label for="lname">Duration</label>
-    <input type="text" id="lname" name="duration" placeholder="Enter duration here">
-   
-
-
-
-    Request Type
-
-     <select name = "request_type">
-        <option value = "immediate" selected>IMMEDIATE</option>
-        <option value = "periodic">PERIODIC</option>
-    </select>
-    Priority
-
-    <select name = "priority">
-        <option value = "high" selected>HIGH</option>
-        <option value = "medium">MEDIUM</option>
-        <option value = "low">  LOW</option>
-    </select>
-
-    <label for="days">Days</label>
-    <select id="days" name="days" >
-      <option value="everyday">Everyday</option>
-      <option value="monday">Monday</option>
-
-      <option value="tuesday">Tuesday</option>
-      <option value="wednesday">Wednesday</option>
-      <option value="thursday">Thursday</option>
-      <option value="friday">Friday</option>
-      <option value="saturday">Saturday</option>
-    </select>
-
-    <label for="lname">Developer Name</label>
-    <input type="text" id="lname" name="DevName" placeholder="Enter Additional details here">
-
-  
-    <input type="submit" value="Submit">
+            <option value="tuesday">Tuesday</option>
+            <option value="wednesday">Wednesday</option>
+            <option value="thursday">Thursday</option>
+            <option value="friday">Friday</option>
+            <option value="saturday">Saturday</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="lname">Developer Name</label>
+        </td>
+        <td>
+          <input type="text" id="lname" name="DevName" placeholder="Enter Additional details here">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="submit" value="Submit">
+        </td>
+      </tr>
+    </table>
   </form>
 </div>
 

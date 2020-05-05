@@ -28,7 +28,7 @@ mydb = myclient["hackdb"]
 
 
 def eventReceiveRuntimeServerToMonMod(m1):
-    # print("receieved:::",m1)
+    print("receieved:::")
     # print(type(m1))
     message = m1
     if (isinstance(message, dict) ):
@@ -37,11 +37,16 @@ def eventReceiveRuntimeServerToMonMod(m1):
     	res = ast.literal_eval(message) 
 
     # res = ast.literal_eval(message) 
-    print("Message receieved:",(res),type(res))
-    mycol = mydb["mon_data"]
+    #print("Message receieved in monitor:",(res),type(res))
+    # mycol = mydb["mon_data"]
     # mydict = { "name": "John", "address": "Highway 37" }
 
-    x = mycol.insert_one(res)
+    # x = mycol.insert_one(res)
+    if res['component']=="server":
+        db = myclient["server_db"]
+        mycol = db[res["server_id"]]
+        x = mycol.insert_one(res)
+
 
 
 fun3=eventReceiveRuntimeServerToMonMod
@@ -59,7 +64,7 @@ def threaded_servers():
 start_new_thread(threaded_servers,()) 
 
 
-print("Monitoring -------------> ")
+print("-------------- Monitoring -------------")
 while(1):
 	pass
 

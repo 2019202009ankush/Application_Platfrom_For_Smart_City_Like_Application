@@ -11,8 +11,8 @@ def event1(msg):
 	loc=msg['location']
 	sensors=msg['algoid']['sensors']
 	
-	print(loc)
-	print(sensors)
+	#print(loc)
+	#print(sensors)
 	curpath=str(os.path.dirname(os.path.realpath(__file__)))  
 	
 	import json 
@@ -31,7 +31,7 @@ def event1(msg):
 	else:
 		sensors_obj=sensors[0]
 		# print("All!!!!!!!!!!!!!!")
-		print("sensobj",sensors_obj)
+		#print("sensobj",sensors_obj)
 		for l in lines:
 			# print("!!@@llll",l.split(':')[0].split('_')[2])
 			if(sensors_obj.startswith(l.split(':')[0].split('_')[2])):
@@ -44,7 +44,7 @@ def event1(msg):
 	
 	msg['topics']=topics
 	msg['ids']=ids
-	print("Sensor Manager",msg)
+	#print("Sensor Manager",msg)
 	# print("iiii",ids)
 	# print("tttt",topics)
 	

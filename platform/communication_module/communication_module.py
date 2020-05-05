@@ -198,10 +198,30 @@ def TopoManager_to_ServiceLifeCycle_interface(func_name):
 	for message in consumer:
 			mess= (message.value)
 			print("failing message2:",msg)
-			# print("mess:",mess)
-			# th = threading.Thread(target=func_name,kwargs={'m1':mess})
-			# th.start()
-			# break
+			print("mess:",mess)
+			th = threading.Thread(target=func_name,kwargs={'m1':mess})
+			th.start()
+			break
+
+
+def ApplicationManager_to_ServiceLifeCycle_interface2(func_name):
+	from kafka import KafkaConsumer
+	topic='ApplicationManager_to_ServiceLifeCycle2'
+	
+	# consumer.subscribe([topic]) 
+	consumer = KafkaConsumer(topic,bootstrap_servers='localhost:9092',value_deserializer=lambda m: json.loads(m.decode('utf-8')))
+
+	for message in consumer:
+			mess= (message.value)
+			#print(mess)
+			th = threading.Thread(target=func_name,kwargs={'msg':mess})
+			th.start()
+            
+
+def ApplicationManager_to_ServiceLifeCycle_Producer_interface2(mess):
+	producer_json.send_message('ApplicationManager_to_ServiceLifeCycle2',mess)
+
+
 
 
 #TOPO MANAGER to Server Lc

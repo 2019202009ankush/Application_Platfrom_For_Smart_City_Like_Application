@@ -1,4 +1,6 @@
 # Requirement denpends on user
+
+
 import json
 with open('config.json') as f:
 		meta = json.load(f)
@@ -28,4 +30,11 @@ with open('report.json', 'w') as json_file:
 # Genereric requirment
 
 import os
-os.system('sudo bash start.sh')
+import time
+#os.system('sudo bash start.sh &')
+#os.system('sudo bash build.sh')
+#time.sleep(25)
+os.system('sudo bash run.sh')
+
+
+

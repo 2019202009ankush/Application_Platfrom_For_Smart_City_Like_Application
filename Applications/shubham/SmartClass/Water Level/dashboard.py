@@ -41,7 +41,5 @@ def index():
 
 
 if __name__ == "__main__":
-    import webbrowser
-    # os.system("google-chrome --no-sandbox 'http://127.0.0.1:5000/'")
-    webbrowser.open("http://127.0.0.1:5002/")
-    app.run(debug=True)
+    app.run(port=5005, debug=True)
+

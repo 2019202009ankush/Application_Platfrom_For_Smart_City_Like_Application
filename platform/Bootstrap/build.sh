@@ -9,3 +9,4 @@ sudo docker build -t dock_service -f DockerFiles/DockServiceLifeCycle .
 sudo docker build -t dock_server1 -f DockerFiles/DockServer1 .
 sudo docker build -t dock_server2 -f DockerFiles/DockServer2 .
 sudo docker build -t dock_app -f DockerFiles/DockAppManager .
+sudo docker build -t dock_topo -f DockerFiles/DockTopo .

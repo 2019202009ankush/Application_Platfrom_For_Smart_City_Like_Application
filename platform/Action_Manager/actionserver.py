@@ -28,16 +28,17 @@ user_no=0
 #    s.quit() 
 
 def action_handler(message):
-    print("in action_handler::111::",message)
     global user_no
+    print("In action_handler  :  ",user_no)
+    
     dict_msg = message
-    print(user_no)
+    #print(user_no)
     if(dict_msg['ActionType']=='Control'):
         print("Hardware Action to be taken !!!!!!!!",dict_msg['Output'])
     
     elif(dict_msg['ActionType']=='Notification'):
         action_list = dict_msg['Action']
-        print("Number of dict accociated "+str(len(action_list)))
+        #print("Number of dict accociated "+str(len(action_list)))
         action_tag=[]
         # temp_list=action_list[0]
         # for key in temp_list:
@@ -63,7 +64,7 @@ def action_handler(message):
                     # print("2 !!@@",name[0],":",action_tag[i])
     #                print(name[1])
                     call_file="'"+curpath+"/"+name[1]+"'"+" "+str(userid)+" "+"'"+str(output)+"' &"
-                    print("\n\ncall",call_file)
+                    #print("\n\ncall",call_file)
                     os.system("python3 "+call_file)
     #                email_method()
                     # break

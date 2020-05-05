@@ -24,9 +24,14 @@
 3. import UI
 4. UI.UI(topic_name)
 ----------------------------------------------------------------------------------------------------------------------------
+#### Important commands
 
+1. docker run --rm --network=host new
+2. sudo docker kill $(sudo docker ps -q)
 
-docker run --rm --network=host new
-sudo docker kill $(sudo docker ps -q)
+--------------------------------------------------------------------------------------------------------------------------
+#### IP and Port to see the dashboard of various service
+1. All kafka topic data visualization https://localhost:3030
+
 
 

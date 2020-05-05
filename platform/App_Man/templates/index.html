@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <style>
+
 input[type=text], select {
   width: 100%;
   padding: 12px 20px;
@@ -42,6 +43,14 @@ input[type=submit] {
   cursor: pointer;
 }
 
+.wrapper{
+  background: #50a3a2;
+background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+background: -moz-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+background: -o-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
+}
+
 input[type=submit]:hover {
   background-color: #45a049;
 }
@@ -54,19 +63,48 @@ div {
 </style>
 <body>
 
-<h3>Enter the Schduling information of an instance</h3>
+<h2>Distributed Platfform for Smart Cities</h2>
 
-<div>
+<div class="wrapper">
 
   <form action="/sign-up" method="POST">
-    <label for="fname">User Name</label>
-    <input type="text" id="fname" name="user_id" placeholder="Enter user id here">
-
-    <label for="fname">Password</label>
-    <input type="password" id="fname" name="pwd" placeholder="Enter password here">
-  
-    <input type="submit"  value="submit">
-       <input type=button value='Click For File Upload'   onClick="location.href='http://127.0.0.1:5555/upload'" >
+    <table>
+      <tr>
+        <td>
+          <label for="fname">User Name : </label>
+        </td>
+        <td>
+          <input type="text" id="fname" name="user_id" placeholder="Enter user id here">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="fname">Password : </label>
+        </td>
+        <td>
+          <input type="password" id="fname" name="pwd" placeholder="Enter password here">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label> Login as : </label>
+        </td>
+        <td>
+          <select name = "dname">
+                <option value = "Developer" selected>Developer</option>
+                <option value = "User">User</option>
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="submit"  value="submit">
+        </td>
+      </tr>
+    </table>
+    
+    <br/>
+    <input type=button value='Click For File Upload'   onClick="location.href='http://127.0.0.1:5555/upload'" >
     
   </form>
 </div>

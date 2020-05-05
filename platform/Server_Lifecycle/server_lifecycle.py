@@ -154,8 +154,8 @@ def handle_restart_service(msg):
 # 	print("end while!!!!")
 
 get_all_server_details()
-start_server()
-start_server()
+#start_server()
+#start_server()
 
 
 

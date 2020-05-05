@@ -1,1 +1,1 @@
-{'UserId': 'lo', 'AppName': 'SmartHostel', 'algoid': 'WL', 'form': 'run', 'start_time': '10:00', 'location': 'obh_112', 'duration': '90', 'request_type': 'immediate', 'priority': 'high', 'days': 'everyday', 'DevName': 'shubham'}
+{'UserId': 'upadhyayyash1712@gmail.com', 'AppName': 'SmartHostel', 'algoid': 'WL', 'form': 'run', 'start_time': '15.49', 'location': 'BAKUL', 'duration': '30', 'request_type': 'immediate', 'priority': 'medium', 'days': 'everyday', 'DevName': 'shubham'}

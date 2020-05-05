@@ -8,6 +8,11 @@ display=""
 
 def run(loc,topic,id):
 	print("AC control Algorithm running")
+
+	curpath=str(os.path.dirname(os.path.realpath(__file__)))
+	cmd="python3 '"+curpath+"/ui_control.py' &"
+	os.system(cmd)
+
 	global display
 
 	mess={}

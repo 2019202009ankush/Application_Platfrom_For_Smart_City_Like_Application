@@ -28,7 +28,7 @@ mydb = myclient["hackdb"]
 
 
 def eventReceiveRuntimeServerToMonMod(m1):
-    print("receieved:::")
+    #print("receieved:::")
     # print(type(m1))
     message = m1
     if (isinstance(message, dict) ):

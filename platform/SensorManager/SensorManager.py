@@ -71,6 +71,6 @@ def event1(msg):
 	# }
 
 
-print("-------- Sensor Manager ---------------")
+print("\n[Sensor Manager] : started\n")
 fun=event1
 communication_module.DeployManager_to_SensorManager_interface(fun)

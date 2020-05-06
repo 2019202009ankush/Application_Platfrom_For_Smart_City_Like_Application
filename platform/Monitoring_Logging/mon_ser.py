@@ -64,7 +64,7 @@ def threaded_servers():
 start_new_thread(threaded_servers,()) 
 
 
-print("-------------- Monitoring -------------")
+print("\n[Monitoring-Module] - started\n")
 while(1):
 	pass
 

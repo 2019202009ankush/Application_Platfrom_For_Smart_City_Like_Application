@@ -9,42 +9,39 @@ import sys
 sys.path.insert(0, "platform/communication_module")
 
 import communication_module as cm
-print('---------- Now in service life cycle -------------')
+print('\n[Service life cycle] : started \n')
 
-def get_scheduler_msg():
+# def get_scheduler_msg():
 
-	f = open('/platform/Service_Lifecycle/scheduler_msg.json',) 
-	data = json.load(f)
-	#print("Service to schedule",data)
-	send_request_serverLC(data)
-	service_data=bind_algo(data)
+# 	f = open('/platform/Service_Lifecycle/scheduler_msg.json',) 
+# 	data = json.load(f)
+# 	#print("Service to schedule",data)
+# 	send_request_serverLC(data)
+# 	service_data=bind_algo(data)
 
-	server=recieved_server_details()
-	print("\nRecieved Server details:- ",server)
-	service_data['server']=server[service_data['reqid']]
+# 	# server=recieved_server_details()
+# 	# print("\nRecieved Server details:- ",server)
+# 	service_data['server']=server[service_data['reqid']]
 
-	#print("\nSending Service details to Deployment Manager\n")
+# 	#print("\nSending Service details to Deployment Manager\n")
 
-	send_service_to_deployment(service_data)
+# 	send_service_to_deployment(service_data)
 
-	return data
+# 	return data
 
 def handle_scheduler_msg(msg):
 	#print("Server LC respond",msg['algoid'])
 	service_data=bind_algo(msg)
 	#print("Algo binded")
-
-	print("receive schedule msg ",msg['algoid'])
-	
+	print("\n [Service life cycle] : Received schedule msg ",msg['algoid']['ServiceName'])	
 	send_request_serverLC(service_data)
-
 	# recieved_server_details(msg)
 
 
 def handle_serverLC_msg(msg):
 	# print("Server LC respond",msg['algoid'])
 	if(msg['server_id']==None):
-		print("Can't Schedule it")
+		print("\n [Service life cycle] : Can't Schedule it all exclusive servers are busy")
 	else:
 		#service_data=bind_algo(msg)
 		# print("Algo binded")

@@ -29,7 +29,7 @@ import communication_module as cm
 # file=open("running.txt","a+")
 
 current_process=None
-print("---------- Schedular Started -------------")
+print("\n[Schedular] - started\n")
 ## using global deque with firstcome first serve schedule.
 dq = collections.deque() 
 
@@ -115,7 +115,7 @@ def main():
 
         while(len(dq)>0):
 
-            print("Hello 1")
+            #print("Hello 1")
             global i
             i=i+1
 
@@ -138,7 +138,7 @@ def main():
                 elif(meta_data["request_type"]=="immediate"):
                     # print("heyyyyyyyyyyyyyy")
                     # global file
-                    print("Scheduling immediately")
+                    print("\n [Schedular] : Scheduling immediately Service with id : ",meta_data["algoid"])
                     curpath=str(os.path.dirname(os.path.realpath(__file__)))
                     file=open(curpath+"/dashboard/running.txt","a")
                     # file=open("running.txt","a")

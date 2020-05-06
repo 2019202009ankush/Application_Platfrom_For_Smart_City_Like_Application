@@ -23,7 +23,7 @@ from kafka import KafkaProducer
 
 curpath=str(os.path.dirname(os.path.realpath(__file__)))
 path=curpath+"/dropall.js"
-os.system("python3 "+path)
+#os.system("python3 "+path)
 
 
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
@@ -163,6 +163,7 @@ start_new_thread(threaded_server,("s2",))
 
 # start_new_thread(communication_module.TopoManager_to_ServiceLifeCycle_interface("None"),())
 
+print('\n[Topological-Manager] : started \n')
 
 while(1):
 	pass

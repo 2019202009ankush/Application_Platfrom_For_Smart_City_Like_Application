@@ -39,7 +39,7 @@ def send_to_server(data):
 	data['service_id']=str(data['server_id'])
 	data['code']=str(cmd)
 	cm.DeployManager_to_RuntimeServer_Producer_interface(data)
-	print("\nSending to Run Time server :-\n",cmd)
+	print("\n[Deployment-Manager] - ",data['algoid']['ServiceName']," deployed")
 
 
 def request_sensor(data):
@@ -58,8 +58,8 @@ def msg_recieved_sensor_mgr():
 	return sensor_id_returned
 
 
-print("-------- Deployment Manager ---------------")
-
+#print("-------- Deployment Manager ---------------")
+print("\n[Deployment-Manager] - started\n")
 th=threading.Thread(target=cm.ServiceLifeCycle_to_DeployManager_interface,kwargs={'func_name':handle_servicelc_msg})
 th.start()
 

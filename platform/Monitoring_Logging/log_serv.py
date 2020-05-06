@@ -64,8 +64,6 @@ def eventReceiveLogData(m1):
         mycol = mydb[cur_collection]
         mycol.insert_one(i)
 
-  
-
     # mycol = mydb[res['component']]
 	# mydict = { "name": "John", "address": "Highway 37" }
     # x = mycol.insert_one(res)
@@ -134,7 +132,7 @@ start_new_thread(threaded,())
 
 
 # createTopics()
+print("\n[Logging-Module] - started\n")
 
-print("---------- Logging --------------")
 while(1):
 	pass

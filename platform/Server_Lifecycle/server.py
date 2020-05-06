@@ -38,7 +38,7 @@ def handle_service(msg):
 
 	msg['code']='"'+ppp_path+msg['code'][1:]
 
-	print("msg",msg)
+	print("Service ",msg['algoid'],"running")
 	
 	# msg_to_send["component"]="server"
 	# msg_to_send["server_id"]=topic
@@ -113,7 +113,7 @@ def get_system_utilization():
 #Monitoring module code
 #print(os.getcwd())
 from kafka import KafkaConsumer
-print('Hii this is ',argv[1])
+print('[Server ',argv[1]," ] started")
 
 topic=str(argv[1])
 

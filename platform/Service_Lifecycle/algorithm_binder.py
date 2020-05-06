@@ -20,7 +20,7 @@ def get_algo_details(msg):
 
 def bind_algo(msg):
 	get_algo_details(msg)
-	print("\nBinding to algo",algorihtm_details[msg["algoid"]])
+	print("\nBinding to algorithm and sensors",algorihtm_details[msg["algoid"]]['sensors'])
 	msg["algoid"]=algorihtm_details[msg["algoid"]]
 	return msg
 

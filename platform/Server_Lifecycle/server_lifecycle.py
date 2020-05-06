@@ -11,7 +11,7 @@ import random as r
 import sys
 sys.path.insert(0, "platform/communication_module")
 
-print('---------- Now in Server life cycle -------')
+print('\n[Server life cycle] : started \n')
 import communication_module as cm
 import producer_json
 
@@ -89,7 +89,7 @@ def compute_load(cpu,mm):
 
 def load_balancer():
 	loads=[]
-	print("Load Balancing")
+	#print("Load Balancing")
 	for k,v in stats.items():
 		#print(k,v)
 		if(server_details[k]['active']==1):
@@ -121,8 +121,7 @@ def send_server_details_msg(msg):
 			flag=1
 		else:
 			msg['server_id']=None
-
-	print("Recevied and scheduled (Server id)\n",msg['server_id'])
+	print("\n[Server life cycle]: Recevied msg and sent (Server id) - ",msg['server_id'], '\n')
 	logmsg={}
 	logmsg['component']='Server_lifecycle'
 	logmsg['msg']=msg
@@ -136,6 +135,7 @@ def handle_service_LC():
 		cm.ServiceLifeCycle_to_ServerLifeCycle_interface(handle_service_LC_msg)
 
 def handle_restart_service(msg):
+	print('\n[Server life cycle] : ',end=" ")
 	print("restart server!!!!!!!!!!!!")
 	# t=r.randint(1,2)
 	#s=load_balancer()
@@ -149,13 +149,13 @@ def handle_restart_service(msg):
 	msg['ip']="127.0.0.1"
 	msg['port']="8090"
 
-	print("Service to schedule-------->\n",sv)
+	#print("Service to schedule-------->\n",sv)
 	logmsg={}
 	logmsg['component']='Server_lifecycle'
 	logmsg['msg']=msg
 	# cm.common_Logger_Producer_interface(logmsg)
 	cm.ServerLifeCycle_to_ServiceLifeCycle_Producer_interface(msg)
-	print("\nmsg sended")
+	#print("\nmsg sended")
 
 
 

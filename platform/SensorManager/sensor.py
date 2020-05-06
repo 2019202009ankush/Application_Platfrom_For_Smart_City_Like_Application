@@ -68,7 +68,7 @@ def sensor_run(i,typ,loc,ip,port):
 		ppath=dirname(curpath)
 		# print("ppath",ppath)
 		ppp_path=dirname(ppath)
-		f=open(ppp_path+'/Applications/pande/SmartClass/Emergency Fire Alarm Service/temperature.txt','a+')
+		f=open(ppp_path+'/Applications/shubham/SmartClass/Emergency Fire Alarm Service/temperature.txt','a+')
 		f.write(str(data))
 		f.write("\n")
 		f.close()

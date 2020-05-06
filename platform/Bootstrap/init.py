@@ -32,8 +32,8 @@ with open('report.json', 'w') as json_file:
 import os
 import time
 #os.system('sudo bash build.sh')
-#os.system('sudo bash start.sh &')
-#time.sleep(45)
+os.system('sudo bash start.sh &')
+time.sleep(45)
 os.system('sudo bash run.sh')
 
 
